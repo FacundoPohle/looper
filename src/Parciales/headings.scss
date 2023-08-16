@@ -1,0 +1,48 @@
+
+* {
+    margin: 0%;
+    padding: 0%;
+    border: 0%;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: inherit;
+    color: red;
+}
+
+.Links{
+    text-decoration: inherit;
+    color: white;
+}
+
+a:hover {
+    color: rgb(255, 255, 255);
+}
+
+ul li {
+    list-style: none;
+}
+
+// .spinner {
+//     position: absolute;
+//     top: 24rem;
+//     right: 45rem;
+// }
+
+body {
+    background-image: url(../Imagenes/fondo.PNG);
+    background-size: cover;
+    width: 100%;
+}
+
+// body::-webkit-scrollbar {
+//     width: 8px;
+//     background-color: rgb(0, 0, 0,);
+// }
+
+// body::-webkit-scrollbar-thumb {
+//     background-color: $color-principal;
+//     border-radius: 10px;
+//     border-right: 4px solid rgba(255, 255, 255, 0.2);
+// }

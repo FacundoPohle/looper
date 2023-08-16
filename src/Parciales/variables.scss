@@ -1,0 +1,15 @@
+$color-principal: crimson;
+
+$color-secundario: rgb(255, 255, 255);
+
+@mixin flexbox ($direccion, $eje-principal:center, $eje-secundario:center) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $eje-principal;
+    align-items: $eje-secundario;
+}
+
+$estilos: (
+        ancho: 320px,
+        alto: 240px    
+    );
