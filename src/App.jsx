@@ -1,22 +1,28 @@
-import './App.scss'
-import NavBar from './Components/Navbar'
-import Base from './Components/Base';
-import Aboutus from './Components/Aboutus';
-import MyProfile from './Components/MyProfile';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import './App.scss';
+import NavBar from './Components/Navbar';
+import Tienda from './Components/Tienda';
+import WaveSurfer from "./Components/WavePlayer"
+import Cart from './Components/Cart';
+import { ContextProvider } from './Utils/Context';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Desplegable } from './Components/Desplegable';
 
 const App = () => {
   return (
+    <ContextProvider>
       <BrowserRouter>
-      <NavBar/>
+      <NavBar />
+      <Desplegable/>
       <Routes>
-         <Route path='/'></Route>
-         <Route path='/category' element={<Base/>}></Route>
-         <Route path='/aboutus' element={<Aboutus/>}></Route>
-         <Route path='/myprofile' element={<MyProfile/>}></Route>
+        <Route path='/'></Route>
+        <Route path='/tienda' element={<Tienda />}></Route>
+        <Route path='/aboutus' element={<WaveSurfer />}></Route>
+        <Route path='/cart' element={<Cart />}></Route>
       </Routes>
-        </BrowserRouter>
-  );
+    </BrowserRouter>
+    </ContextProvider>
+     );
+      
 }
 
 export default App;

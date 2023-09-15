@@ -1,11 +1,3 @@
-.prueba{
-    display: flex;
-    flex-direction: row ;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10;
-}
-
 .center{
     display: flex;
     text-align: center;
@@ -19,7 +11,7 @@
   }
   .button{
     height: 50px;
-    min-width: 200px;
+    min-width: 180px; // Parte colorida del boton
     border-radius: 60px;
   }
 
@@ -41,7 +33,7 @@
   }
   .button button{
     height: 40px;
-    min-width: 190px;
+    min-width: 170px; //Parte negra del boton
     border-radius: 60px;
   }
 
@@ -80,4 +72,14 @@
     .outer{
       margin: 50px 0;
     }
+  }
+
+  .active-hover .outer span:nth-child(1),
+  .active-hover .outer span:nth-child(2) {
+    filter: blur(7px);
+  }
+  .active-hover .outer {
+    /* Estilos de fondo cuando el panel está expandido */
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    animation: rotate 1.5s linear infinite;
   }

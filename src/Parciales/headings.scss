@@ -4,6 +4,7 @@
     padding: 0%;
     border: 0%;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -31,10 +32,29 @@ ul li {
 // }
 
 body {
+    --black: #000000;
+    --ash-black: #222;
+    --white: #fafafa;
+    --sky: #00ccff;
+    --green: #22dddd;
+    --blue: #1300ff;
+    --dusk: #6600ff;
+    --purple: #9900ff;
+    --pink: #ff0066;
+    --red: #fe0222;
+    --orange: #fd7702;
+    --yellow: #ffbb00;
+  
+    --background: var(--purple);
+    --accent: var(--white);
+    font-family: 'Nunito', sans-serif;
     background-image: url(../Imagenes/fondo.PNG);
+    background-attachment: fixed;
     background-size: cover;
     width: 100%;
 }
+
+
 
 // body::-webkit-scrollbar {
 //     width: 8px;

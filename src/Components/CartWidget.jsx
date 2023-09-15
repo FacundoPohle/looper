@@ -1,14 +1,14 @@
 import { Badge } from '@mui/material';
 import { ShoppingCartOutlined } from '@mui/icons-material';
 // import { useContext } from "react";
-// import { CartContext } from "./CartContext";
+import { useGralContext } from "../Utils/Context";
 
 const CartWidget = () => {
 
-    // const ctx = useContext(CartContext) 
+    const {cartCount} = useGralContext() 
 
     return (
-        <Badge badgeContent = {30} color="secondary" className='cart'>
+        <Badge badgeContent = {cartCount} color="secondary" className='cart'>
             <ShoppingCartOutlined/>
         </Badge>
     )
