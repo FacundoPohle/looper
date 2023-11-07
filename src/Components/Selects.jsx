@@ -120,10 +120,10 @@ function ComboBox() {
     value={selectedValue}
     onChange={(event, newValue) => {
       setSelectedValue(newValue); // Almacenar el valor seleccionado
-      handleFilterChange('label', newValue ? newValue.label : null); // Llamar a la función de manejo del filtro con el nuevo valor
+      handleFilterChange('name', newValue ? newValue.name : null); // Llamar a la función de manejo del filtro con el nuevo valor
     }}
     sx={{ width: 200, height:80}}
-    renderInput={(params) => <TextField {...params} label="Sample" />}
+    renderInput={(params) => <TextField {...params} name="Sample" />}
     />
     );
   }

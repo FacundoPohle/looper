@@ -1,4 +1,4 @@
-import MenuButton from "./MenusButton";
+import {MenuButtonFilter} from "./MenusButton";
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -17,7 +17,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <MenuButton title='Tipo' />
+                    <MenuButtonFilter title='Tipo' />
                 </AccordionSummary>
                 <AccordionDetails className="d-flex flex-row justify-content-center">
                     <Select1 />
@@ -28,7 +28,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <MenuButton title='Genero'  />
+                    <MenuButtonFilter title='Genero'  />
                 </AccordionSummary>
                 <AccordionDetails>
                     <AccordionDetails className="d-flex flex-row justify-content-center">
@@ -41,7 +41,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel3bh-content"
                     id="panel3bh-header"
                 >
-                    <MenuButton title='Groups' />
+                    <MenuButtonFilter title='Groups' />
                 </AccordionSummary>
                 <AccordionDetails className="d-flex flex-row justify-content-center">
                     <Select3 />
@@ -52,7 +52,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel4bh-content"
                     id="panel4bh-header"
                 >
-                    <MenuButton title='Sounds' />
+                    <MenuButtonFilter title='Sounds' />
                 </AccordionSummary>
                 <AccordionDetails className="d-flex flex-row justify-content-center">
                     <ComboBox />

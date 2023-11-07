@@ -55,6 +55,10 @@ body {
 }
 
 
+.principal{
+    color: var(--purple) ;
+}
+
 
 // body::-webkit-scrollbar {
 //     width: 8px;
@@ -66,3 +70,22 @@ body {
 //     border-radius: 10px;
 //     border-right: 4px solid rgba(255, 255, 255, 0.2);
 // }
+.point{
+    position: relative;
+
+    &__absolute{
+      position: absolute;
+      top: 4rem;
+      left: 0rem;
+      height: 25rem;
+      width: 30rem;
+    }
+
+    &__absolute--2{
+      position: absolute;
+      top: 2rem;
+      left: 25rem;
+      height: 35rem;
+      width: 50rem;
+    }
+  }

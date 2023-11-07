@@ -1,5 +1,5 @@
 .Base {
-    margin-top: 8%;
+    margin-top: 6.5rem;
     margin-bottom: 10rem;
     display: flex;
     flex-direction: row;
@@ -14,19 +14,37 @@
         justify-content: center;
         align-items: center;
     }
+
+    
 }
 
+.anchoscroll{
+    width: 100%;
+}
 
 .scroll {
     // border-bottom: 2px solid #111 ;
     // border-top: 2px solid #111 ;
+    padding-right: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
     height: 20rem;
     margin-bottom: 1rem;
-    overflow-y: scroll
+    overflow-y: scroll;
+}
+
+.scroll2{
+    @extend .scroll;
+    justify-content: flex-end;
+    height: 16rem;
+
+}
+
+.scroll3{
+    @extend .scroll;
+    flex-direction: column;
 }
 
 .scroll::-webkit-scrollbar {
@@ -34,7 +52,7 @@
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: #4a4949;
+    background-color: black;
     border-radius: 4px;
 }
 
@@ -51,10 +69,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
     border-radius: 8px;
     text-align: center;
-    padding: 2rem 0rem 2rem 0rem;
+    padding: 2rem 4rem 2rem 0rem;
     color: white;
     transition: 1s;
     min-height: 30rem;
@@ -81,8 +99,8 @@
     &__buttons {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        padding-inline: 1.5rem;
+        justify-content: flex-end;
+        gap: 1rem;
         padding-bottom: 1rem;
         width: 100%;
     }
@@ -103,19 +121,21 @@
         &:hover {
             background-color: grayscale($color: #333333);
             box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-            transform: scale(101%);
+            transform: scale(100.05%);
         }
     }
 }
 
+
+// Canvas
 .filterMenu {
 
     height: 2.8rem;
 
     &__canvas {
-        background-color: rgba(243, 243, 243, 0.3) !important;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter:blur(12px);
+        // background-color: var(--ash-black) !important;
+        background-color: var(--ash-black) !important;
+        color: var(--white) !important;
         width: 18rem !important;
 
         &-body {
@@ -125,7 +145,13 @@
     }
 }
 
+.btn-close{
+    --bs-btn-close-color: var(--white) !important;
+    background-color: var(--white) !important;
+    --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(94, 94, 95, 0.25) !important;
+}
 
+// Canvas select
 // Select selected
 .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: var(--purple) !important;
@@ -155,9 +181,14 @@
 
 // campo select
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
-        background: var(--black) !important;
+        background: transparent !important;
         border-radius: 10px !important;
         color: var(--white) !important;
+    }
+
+    // icono del select
+    .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
+        color: var(--purple) !important;
     }
 
 
@@ -205,7 +236,41 @@
     flex-direction: column;
     background: var(--black);
     padding: 1rem 0 0 0 ;
+    height: 20rem !important;
   }
+
+  .ul2 {
+    @extend .ul;
+    overflow-y: scroll;
+  }
+
+  .ul3{
+    @extend .ul;
+    padding-top: 0rem;
+    padding-right: 1rem;
+    height: 8rem !important;
+    overflow-y: scroll;
+  }
+
+
+
+  .ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ul::-webkit-scrollbar-thumb {
+    background-color: var(--purple);
+    border-radius: 4px;
+}
+
+.ul::-webkit-scrollbar-thumb:hover {
+    background-color: #111;
+}
+
+.ul::-webkit-scrollbar-track {
+    background-color: #333333;
+    border-radius: 4px;
+}
   
   .li {
     display: block;
@@ -248,6 +313,9 @@
   .buttonn path {
     fill: var(--background);
 }
+
+
+// framer objet
 
 .containerr {
     width: 300px;

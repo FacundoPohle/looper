@@ -69,9 +69,7 @@
       flex-wrap: wrap;
       flex-direction: column;
     }
-    .outer{
-      margin: 50px 0;
-    }
+
   }
 
   .active-hover .outer span:nth-child(1),
@@ -82,4 +80,21 @@
     /* Estilos de fondo cuando el panel está expandido */
     background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
     animation: rotate 1.5s linear infinite;
+  }
+
+  .margen{
+    background-color: black;
+    margin-top: 8rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font: bold;
+  }
+  
+
+
+  .notvisible{
+    display: none !important;
   }

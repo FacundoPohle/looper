@@ -25,9 +25,9 @@ const variants = {
 };
 
 const colors = ["#FF008C", "#D309E1", "#9C1AFF"];
-const names = ["Tienda", "About Us", "Cart"];
+const names = ["Tienda", "My Profile ", "Cart"];
 const icons = [<StoreIcon />, <InfoIcon />, <CartWidget />]
-const navs = ['/tienda', '/about us', '/cart']
+const navs = ['/tienda', '/myprofile', '/cart']
 
 export const MenuItem = ({ i }) => {
     const style = { border: `2px solid ${colors[i]}` };

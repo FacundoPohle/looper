@@ -1,12 +1,13 @@
 import { useGralContext } from '../Utils/Context';
 import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import React, { useEffect } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion"
 
 function AllSounds() {
-    const { filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart } = useGralContext();
+    const { filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, addToFavorites } = useGralContext();
 
 
     // Esta función maneja la reproducción de un sample
@@ -25,16 +26,24 @@ function AllSounds() {
     );
 
     return (
-        <div className='w-100'>
+        <div className='anchoscroll'>
             <div className='scroll my-2'>
                 {filteredSamples.length === 0 ? (
                     notFoundMessage
-                ) : (
+                ) : ( 
                     <ul className='ps-0'>
                         {filteredSamples.map(sampleData => (
                             <div className='sounds__tracks' key={sampleData.id}>
                                 <li className='text-start'>{sampleData.name}</li>
                                 <div className='d-flex flex-row gap-3'>
+                                    <Tooltip title='Add to my profile'>
+                                    <motion.div
+                                        style={{ cursor: 'pointer' }}
+                                        whileTap={{ scale: 0.8, borderRadius: "100%" }}
+                                        onClick={() => addToFavorites(sampleData)}
+                                    ><FavoriteRoundedIcon />
+                                    </motion.div>
+                                    </Tooltip>
                                     <Tooltip title='Play'>
                                     <motion.div
                                         style={{ cursor: 'pointer' }}

@@ -1,11 +1,11 @@
 import AllSounds from "./AllSounds";
-import WaveSurfer from "./WavePlayer";
 import { useGralContext } from '../Utils/Context';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import AcordeonFilter from "./Acordeon";
-import Filters from "./FiltersMenu";
 import { motion } from "framer-motion";
+import  RobotCanvas  from './Canvas/Robot'
+
 
 
 
@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 
 const Base = () => {
 
-    const { show, handleClose, toggleShow, handleResetFilters } = useGralContext();
+    const { show, handleClose, toggleShow, handleResetFilters} = useGralContext();
 
     // const constraintsRef = useRef(null)
 
@@ -29,8 +29,9 @@ const Base = () => {
                         dragConstraints={constraintsRef}
                         />
                     </motion.div> */}
-                <div className="sounds">
-                    <Filters />
+                <div className="sounds point">
+                    {/* <Filters/> */}
+                <div className='point__absolute'><RobotCanvas/></div>
 
                     <Offcanvas backdrop={false} className='filterMenu__canvas' show={show} onHide={handleClose}>
                         <Offcanvas.Header closeButton>
@@ -63,7 +64,6 @@ const Base = () => {
                     </motion.div>
                 </div>
             </div>
-            <WaveSurfer />
         </div>
 
 

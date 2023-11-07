@@ -1,0 +1,64 @@
+.modal-header{
+    border-bottom: none !important;
+}
+
+input {
+    padding: .6rem .8rem .6rem .8rem !important;
+    border-radius: 8px;
+}
+select {
+    @extend input
+}
+
+.modal-content {
+    background-color: var(--ash-black) !important;
+    color: var(--white) !important;
+    height: 35rem ;
+
+    &__login{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: space-between;
+        min-height: 30rem;
+        padding-inline: 3rem;
+    }
+
+    
+
+    &__button{
+        border: none !important;
+        color: var(--white);
+        background-color: var(--purple);
+        border-radius: 4px;
+        width: 6rem;
+        height: 2.6rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__width{
+        width: 40%;
+    }
+
+    &__fila{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+    }
+
+    &__labels{
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        margin-top: 1rem;
+    }
+
+    &__span{
+        display: block;
+        color: tomato;
+        font-size: x-small;
+    }
+}

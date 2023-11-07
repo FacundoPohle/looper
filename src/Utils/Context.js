@@ -11,30 +11,34 @@ export function ContextProvider({ children }) {
 
 
 
-  // Contexto del Audioplayer
+  /////////////////////////////////////////////////////////Contexto del Audioplayer///////////////////////////////////////
 
   const [currentSample, setCurrentSample] = useState(null);
   const [currentAudioName, setCurrentAudioName] = useState('');
 
 
 
-  // Contexto del Acordeon
-
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
 
 
 
-  // Contexto Filters
 
+
+//////////////////////////////////////////////// Contexto Filters/////////////////////////////////////////////////////////
+
+// Acordeon
+
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+
+//Filters
   const [selectedFilters, setSelectedFilters] = useState({
     type: null,
     genre: null,
     group: null,
-    label: null,
+    name: null,
   });
 
   const filteredSamples = samplesData.filter((sample) => {    // Filtra la lista de samples según los filtros seleccionados
@@ -42,13 +46,13 @@ export function ContextProvider({ children }) {
     const typeFilter = !selectedFilters.type || sample.type === selectedFilters.type;
     const genreFilter = !selectedFilters.genre || sample.genre === selectedFilters.genre;
     const groupFilter = !selectedFilters.group || sample.group === selectedFilters.group;
-    const soundFilter = !selectedFilters.label || sample.label === selectedFilters.label;
-    
+    const soundFilter = !selectedFilters.name || sample.name === selectedFilters.name;
+
     return typeFilter && genreFilter && groupFilter && soundFilter;// Retorna true si todas las condiciones de filtro se cumplen
   });
 
   const [theFilteredSamples, setTheFilteredSamples] = useState(filteredSamples); // Inicialmente, muestra todos los samples
-  
+
   const handleFilterChange = (filterType, value) => {  // Maneja cambios en los filtros seleccionados
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
@@ -61,13 +65,10 @@ export function ContextProvider({ children }) {
       type: null,
       genre: null,
       group: null,
-      label: null,
+      name: null,
     });
     setTheFilteredSamples(samplesData); // Restablece filteredSamples a su estado original
   };
-
-
-
 
   //   OffCanvas
   const [show, setShow] = useState(false);
@@ -80,22 +81,22 @@ export function ContextProvider({ children }) {
 
 
 
-  // Contexto Carro
+  /////////////////////////////////////////////// Contexto Carro//////////////////////////////////////////////////////////////
   const [cartList, setCartList] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
-
+  
   // Función para agregar un sample al carrito
   const addToCart = (sample) => {
     // Verifica si el sample ya está en el carrito por su ID
     const isSampleInCart = cartList.some((cartItem) => cartItem.id === sample.id);
-  
+    
     if (!isSampleInCart) {
       // Si el sample no está en el carrito, agrégalo
       setCartList([...cartList, sample]);
 
       setCartCount(cartCount + 1)
-      
+
       // Muestra una notificación
       Toastify({
         text: "Successfully added to cart",
@@ -114,9 +115,32 @@ export function ContextProvider({ children }) {
         },
       }).showToast();
     }
-  
+
   };
-  
+
+  const calculateSubTotal = () => {
+    let totalPrice = 0;
+
+    for (const sample of cartList) {
+      totalPrice += parseFloat(sample.price);
+    }
+
+    // Round to two decimal places
+    return totalPrice.toFixed(2);
+  };
+
+  const calcTax = () => {
+    return calculateSubTotal() * 0.15;
+  }
+
+  const calculateTotalPrice = () => {
+    const subtotal = parseFloat(calculateSubTotal());
+    const tax = parseFloat(calcTax());
+    const total = subtotal + tax;
+    
+    // Round to two decimal places
+    return total.toFixed(2);
+  };
 
   // Función para quitar un sample del carrito
   const removeFromCart = (sampleToRemove) => {
@@ -129,8 +153,100 @@ export function ContextProvider({ children }) {
   };
 
 
+  const clearCart = () => {
+    setCartList([]);
+    setCartCount(0);
+  };
+
+
+
+
+
+//////////////////////////////////////////////////////////Contexto Profile//////////////////////////////////////////////////////////////////
+const [favoriteSamples, setFavoriteSamples] = useState([]);
+  
+
+// Favoritos
+const addToFavorites = (sample) => {
+  if (!favoriteSamples.includes(sample)) {
+    setFavoriteSamples((prevFavorites) => [...prevFavorites, sample]);
+  }
+};
+
+const removeFromFavorites = (sample) => {
+  setFavoriteSamples((prevFavorites) =>
+    prevFavorites.filter((favSample) => favSample !== sample)
+  );
+};
+
+//Playlist
+
+const [playlists, setPlaylists] = useState([]);
+const [selectedPlaylist, setSelectedPlaylist] = useState(null)
+
+const updatePlaylist = (updatedPlaylist) => {
+  setPlaylists(prevPlaylists => {
+    const updatedPlaylists = prevPlaylists.map(playlist => {
+      if (playlist.name === updatedPlaylist.name) {
+        return updatedPlaylist;  // Actualiza la playlist correspondiente
+      }
+      return playlist;
+    });
+    return updatedPlaylists;
+  });
+};
+
+const addToPlaylist = (sampleData) => {
+  if (selectedPlaylist) {
+    // Verifica si el sample ya está en la lista de reproducción
+    const isSampleAlreadyAdded = selectedPlaylist.samples.some(
+      (sample) => sample.id === sampleData.id
+    );
+
+    // Si el sample no está en la lista, agrégalo
+    if (!isSampleAlreadyAdded) {
+      // Crea una nueva copia de la playlist para actualizarla
+      const updatedPlaylist = { ...selectedPlaylist };
+
+      // Agrega el sample al array de samples de la playlist
+      updatedPlaylist.samples.push(sampleData);
+
+      // Actualiza la playlist en el contexto
+      updatePlaylist(updatedPlaylist);
+    } else {
+      console.log('Este sample ya está en la lista de reproducción.');
+    }
+  }
+};
+
+const removeFromPlaylist = (sampleId) => {
+  if (selectedPlaylist) {
+    const updatedSamples = [...selectedPlaylist.samples];  // Create a copy of the samples array
+
+    const indexToRemove = updatedSamples.findIndex(
+      (sample) => sample.id === sampleId
+    );
+
+    if (indexToRemove !== -1) {
+      updatedSamples.splice(indexToRemove, 1);  // Remove the item at the specified index
+    }
+
+    const updatedPlaylist = {
+      ...selectedPlaylist,
+      samples: updatedSamples,
+    };
+
+    // Update the playlist in the context
+    updatePlaylist(updatedPlaylist);
+    setSelectedPlaylist(updatedPlaylist);
+  }
+};
+
+
+
+
   return (
-    <Context.Provider value={{ cartCount,  theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart}}>
+    <Context.Provider value={{removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart }}>
       {children}
     </Context.Provider>
   );
