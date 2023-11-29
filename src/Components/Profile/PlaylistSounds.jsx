@@ -4,9 +4,10 @@ import AddPlaylistSounds from './AddPlaylistSounds';
 import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
+import Robot from '../Canvas/Robot'
 
 function PlaylistSounds() {
-    const { selectedPlaylist, removeFromPlaylist, setCurrentSample, currentSample, setCurrentAudioName, addToCart, removeFromFavorites } = useGralContext();
+    const { selectedPlaylist, removeFromPlaylist, setCurrentSample, currentSample, setCurrentAudioName, deletePlaylist, addToCart, removeFromFavorites } = useGralContext();
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -22,19 +23,17 @@ function PlaylistSounds() {
 
     // Mensaje a mostrar cuando no se encuentran resultados
     const notFoundMessage = (
-        <div className='myProfile__empty '>
-            <div onClick={() => setModalShow(true)}>Select your playlist</div>
-            <AddPlaylistSounds
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+        <div className='point__absolute--7'>
+            <Robot />
+            <p className='titulos fs-6 profmessage4'>Select or create your playlist</p>
         </div>
 
     );
 
-    const addButton = (
+    const Buttons = (
         <>
-            <div className='d-flex flex-row justify-content-end'>
+            <div className='d-flex flex-row justify-content-between'>
+                <button className='playlist__sounds-button' onClick={() => deletePlaylist()}>Delete Playlist</button>
                 <button className='playlist__sounds-button' onClick={() => setModalShow(true)}>Add samples</button>
             </div>
             <AddPlaylistSounds
@@ -42,6 +41,7 @@ function PlaylistSounds() {
                 onHide={() => setModalShow(false)}
             /></>
     )
+
 
 
     return (
@@ -72,7 +72,7 @@ function PlaylistSounds() {
                     notFoundMessage
                 )}
             </div>
-            {selectedPlaylist && addButton}
+            {selectedPlaylist && Buttons}
         </div>
     );
 }

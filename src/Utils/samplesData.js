@@ -8,8 +8,8 @@ const samplesData = [
     type: 'Producción musical',
     genre: 'TECHNO',
     group: 'Loop',
-    name: 'top loop',
-    label: 'top loop',
+    name: 'Top loop',
+    label: 'Top loop',
     url: "https://audioplayer.madza.dev/Madza-Chords_of_Life.mp3",
     price: 2.60
     // Otras propiedades relacionadas con el sample

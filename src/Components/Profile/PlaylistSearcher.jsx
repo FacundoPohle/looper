@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
 import Button from 'react-bootstrap/Button';
 import PlaylistSounds from "./PlaylistSounds";
 import { Link } from "react-router-dom";
 import FiltersPlaylist from "./FilteredPlaylist";
-
+import { useGralContext } from '../../Utils/Context';
 
 const PlaylistSearcher = () => {
+
+    const { selectedPlaylist } = useGralContext();
 
 
     return (
@@ -20,24 +21,16 @@ const PlaylistSearcher = () => {
                     </motion.div> */}
                 <div className="myProfile__sounds ">
                     <FiltersPlaylist />
-                    <motion.div
-                        className="box"
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.5,
-                            ease: [0, 0.71, 0.2, 1.01]
-                        }}
-                    >
                         <div className="sounds__samples">
-                            <div className="sounds__buttons">
-                                <Button variant='dark' ><Link className="Links" to="/myprofile">Go my profile</Link></Button>
-                                <Button variant='dark' ><Link className="Links" to="/tienda">Go Explore</Link></Button>
+                            <div className="sounds__buttons2">
+                                <p className="playlist__title titulos mt-2 fs-6">{selectedPlaylist && <p><span className='playlist__title2'>Playlist: </span>{selectedPlaylist.name}</p>}</p>
+                                <div className="sounds__buttons">
+                                    <Button variant='dark' ><Link className="Links" to="/myprofile">GO MY PROFILE</Link></Button>
+                                    <Button variant='dark' ><Link className="Links" to="/tienda">GO EXPLORE</Link></Button>
+                                </div>
                             </div>
                             <PlaylistSounds />
                         </div>
-                    </motion.div>
                 </div>
             </div>
         </>

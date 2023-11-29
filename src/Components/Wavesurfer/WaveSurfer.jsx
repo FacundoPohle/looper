@@ -128,7 +128,7 @@ const WaveSurferPlayer = (props) => {
             ><SkipNextIcon /></motion.div>
           </div>
         </div>
-        <p className='wavesurfer__info--p2'>{currentAudioName ? currentAudioName : 'Sample de prueba'}</p>
+        <p className='wavesurfer__info--p2 titulos'>{currentAudioName ? currentAudioName : 'Sample de prueba'}</p>
         <p className='wavesurfer__info--p'> <span style={{ color: '#9900ff' }}>{currentTimeInMinutes}</span> / {durationInMinutes}</p>
         <div className='volume'>
           {isMuted ? (

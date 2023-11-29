@@ -7,7 +7,7 @@ import "toastify-js/src/toastify.css"
 
 
 function CreatePlaylist(props) {
-  const { addToPlaylist, playlists, setPlaylists, selectedPlaylist } = useGralContext();
+  const {  playlists, setPlaylists, setSelectedPlaylist } = useGralContext();
 
   const {
     register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: { nombre: '' } });
@@ -35,6 +35,7 @@ function CreatePlaylist(props) {
       // Agregar la nueva playlist al estado de playlists
       setPlaylists([...playlists, newPlaylist]);
           // Agregar la muestra a la playlist actualmente seleccionada
+      setSelectedPlaylist(newPlaylist)
 
 
       // Agregado correctamente
@@ -48,7 +49,7 @@ function CreatePlaylist(props) {
 
       console.log('Playlists:', playlists);
     }
-
+ 
     reset();
   });
 
@@ -76,14 +77,14 @@ function CreatePlaylist(props) {
                   value: true,
                   message: "Nombre es requerido",
                 },
-                maxLength: 20,
+                maxLength: 15,
                 minLength: 2,
               })}
             />
           </div>
           {errors.nombre?.type === "required" && <span className="modal-content__span">Name must consist of only letters, numbers, underscore and dash</span>}
           {errors.nombre?.type === "maxLength" && (
-            <span className="modal-content__span">Nombre no debe ser mayor a 20 caracteres</span>
+            <span className="modal-content__span">Nombre no debe ser mayor a 15 caracteres</span>
           )}
           {errors.nombre?.type === "minLength" && (
             <span className="modal-content__span">Nombre debe ser mayor a 2 caracteres</span>

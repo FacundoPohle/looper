@@ -17,7 +17,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
-                    <MenuButtonFilter title='Tipo' />
+                    <MenuButtonFilter title='Type' />
                 </AccordionSummary>
                 <AccordionDetails className="d-flex flex-row justify-content-center">
                     <Select1 />
@@ -28,7 +28,7 @@ const AcordeonFilter = () => {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                 >
-                    <MenuButtonFilter title='Genero'  />
+                    <MenuButtonFilter title='Genre'  />
                 </AccordionSummary>
                 <AccordionDetails>
                     <AccordionDetails className="d-flex flex-row justify-content-center">

@@ -7,6 +7,11 @@
     -webkit-font-smoothing: antialiased;
 }
 
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik+Mono+One&family=Sofia+Sans:wght@400;500;700&display=swap');
+
 a {
     text-decoration: inherit;
     color: red;
@@ -48,6 +53,7 @@ body {
     --background: var(--purple);
     --accent: var(--white);
     font-family: 'Nunito', sans-serif;
+    // font-family: 'Rubik Mono One', monospace;
     background-image: url(../Imagenes/fondo.PNG);
     background-attachment: fixed;
     background-size: cover;
@@ -70,22 +76,82 @@ body {
 //     border-radius: 10px;
 //     border-right: 4px solid rgba(255, 255, 255, 0.2);
 // }
+
+//point absolutes
+
 .point{
     position: relative;
 
     &__absolute{
       position: absolute;
-      top: 4rem;
+      top: 1.5rem;
       left: 0rem;
-      height: 25rem;
+      height: 27rem;
       width: 30rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     &__absolute--2{
       position: absolute;
-      top: 2rem;
       left: 25rem;
       height: 35rem;
       width: 50rem;
     }
+
+    &__absolute--3{
+      position: absolute;
+      top: 31rem;
+      left: 14rem;
+    }
+
+    &__absolute--4{
+      position: absolute;
+      top: 34rem;
+      left: 17.5rem;
+    }
+
+    &__absolute--5{
+      position: absolute;
+      top: 1rem;
+      left: 8rem;
+      height: 22rem !important;
+      width: 30rem !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__absolute--6{
+      @extend .point__absolute--5;
+      top: 1rem;
+      left: 14rem;
+    }
+
+    &__absolute--7{
+      @extend .point__absolute--5;
+      top: 3rem;
+      left: 40rem;
+    }
+    
+    &__absolute--8{
+      @extend .point__absolute--5;
+      top: 1rem;
+      left: 10rem;
+    }
+    
+
+
+
+  }
+
+  .subtitulos{
+    font-family: $subtitulos;
+  }
+
+  .titulos{
+    font-family: $titulos;
   }

@@ -9,6 +9,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { motion } from "framer-motion"
 import { useGralContext } from '../Utils/Context';
 import { Link } from "react-router-dom";
+import Robot from './Canvas/Robot'
+
 
 
 
@@ -25,15 +27,15 @@ const Cart = () => {
 
     return (
         < div className='carro__display'>
-            <div className='carro'>
-                <h2>Cart</h2>
+            <div className='carro point'>
+                <h2 className='titulos'>Cart</h2>
                 {ctx.cartList && ctx.cartList.length > 0 ? (
                     <>
                         <ul className='ul3 ps-0'>
                             {ctx.cartList.map((sample) => (
                                 <li className='carro__samples' key={sample.id}>
                                     <div className='carro__samples--names'>
-                                    <span>{sample.name}</span> <span className='carro__genre'>{sample.genre}</span>
+                                        <span>{sample.name}</span> <span className='carro__genre'>{sample.genre}</span>
                                     </div>
                                     <div className='carro__close'>
                                         <span>${parseFloat(sample.price).toFixed(2)}</span>
@@ -64,9 +66,10 @@ const Cart = () => {
                         </div>
                     </>
                 ) : (
-                    <div className='carro__goback'>
-                    <p>Your cart is empty.</p>
-                    <Link className='Links ntitle fromLeft ms-0 ps-0 w-100' to="/tienda">Click here to go to the tend</Link>
+                    <div className='point__absolute--6'>
+                        <Robot />
+                        <p className="titulos fs-6 errorfound">Your cart is empty.</p>
+                        <Link className='Links titulos fs-6 profmessage3' to="/tienda">Click <span className='profmessage3__word'>here</span> to check the store</Link>
                     </div>
                 )}
 

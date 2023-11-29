@@ -6,12 +6,19 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-
+import Robot from '../Canvas/Robot'
+import { Link } from "react-router-dom";
 
 function AddPlaylistSounds(props) {
   const { addToPlaylist, favoriteSamples, setCurrentSample, setCurrentAudioName, addToCart } = useGralContext();
 
+  const notFoundMessage = (
+    <div className='point__absolute--8'>
+        <Robot />
+        <Link className='Links fs-6 profmessage4 titulos' to="/tienda">you should <span className='profmessage3__word'>add</span> some favorites</Link>
+    </div>
 
+);
 
   // Esta función maneja la reproducción de un sample
   const handlePlaySample = (sampleData) => {
@@ -32,8 +39,8 @@ function AddPlaylistSounds(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='px-5'>
-        <ul className='scroll3 ps-0'>
-          {favoriteSamples.map(sampleData => (
+        <ul className='scroll3 ps-0 py-1'>
+          {favoriteSamples.length > 0 ? favoriteSamples.map(sampleData => (
             <div className='sounds__tracks w-100' key={sampleData.id}>
               <li className='text-start'>{sampleData.name}</li>
               <div className='d-flex flex-row gap-3'>
@@ -65,7 +72,7 @@ function AddPlaylistSounds(props) {
                 </Tooltip>
               </div>
             </div>
-          ))}
+          )) : notFoundMessage}
         </ul>
 
         <Modal.Footer className='px-0 mt-5' >

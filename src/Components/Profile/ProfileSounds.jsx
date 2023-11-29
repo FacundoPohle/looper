@@ -6,6 +6,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Robot from '../Canvas/Robot'
 
 
 
@@ -25,22 +26,20 @@ function ProfileSounds() {
 
     // Mensaje a mostrar cuando no se encuentran resultados
     const notFoundMessage = (
-        <div className='myProfile__empty '>
-            <p className="not-found">You didn't select sounds yet!</p>
-            <Link className='Links ntitle fromLeft ms-0 w-100 p-0' to="/tienda">go check some</Link>
+        <div className='point__absolute--5'>
+            <Robot/>
+            <p className="titulos fs-6 profmessage">You didn't select sounds yet!</p>
+            <Link className='Links fs-6 profmessage2 titulos' to="/tienda">go <span className='profmessage3__word'>check</span> some</Link>
         </div>
     );
 
     return (
-        <div className='anchoscroll'>
+        <div className='anchoscroll '>
             <div className='scroll my-2'>
                 {favoriteSamples.length === 0 ? (
-
                     notFoundMessage
-
                 ) : (
                     <>
-
                         <ul className='ps-0'>
                             {favoriteSamples.map(sampleData => (
                                 <div className='sounds__tracks' key={sampleData.id}>

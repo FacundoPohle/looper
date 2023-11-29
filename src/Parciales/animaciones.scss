@@ -1,0 +1,171 @@
+//animaciones
+
+.entrance {
+    letter-spacing: 7px !important;
+    overflow: hidden;
+    border-right: 2px solid hsl(0, 0%, 80%);
+    /* Inicia con color hsl(0, 0%, 80%) */
+    white-space: nowrap;
+    animation: typewriter 2s steps(44) 1s 1 normal both,
+      blinkTextCursor 500ms 10 normal forwards;
+    /* Detener la animación después de 5 segundos y mantener el estado final */
+  }
+  
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+  
+    to {
+      width: 360px;
+    }
+  }
+  
+  @keyframes blinkTextCursor {
+    from {
+      border-right-color: hsl(0, 0%, 80%);
+    }
+  
+    to {
+      border-right-color: transparent;
+    }
+  }
+  
+  
+  .entrance2 {
+    letter-spacing: 7px !important;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    /* Inicia con color transparente */
+    white-space: nowrap;
+    animation: typewriterr 2s steps(44) 5s 1 normal both,
+      blinkTextCursorr 500ms infinite 6s;
+    /* Inicia después de 5 segundos */
+  }
+  
+  @keyframes typewriterr {
+    from {
+      width: 0;
+    }
+  
+    to {
+      width: 248px;
+    }
+  }
+
+  @keyframes typewriterrr {
+    from {
+      width: 0;
+    }
+  
+    to {
+      width: 230px;
+    }
+  }
+
+  @keyframes typewriterprof {
+    from {
+      width: 0;
+    }
+  
+    to {
+      width: 500px;
+    }
+  }
+  
+  @keyframes blinkTextCursorr {
+    from {
+      border-right-color: transparent;
+      /* Inicia con color transparente */
+    }
+  
+    to {
+      border-right-color: hsl(0, 0%, 80%);
+    }
+  }
+
+  .planetarytext1{
+    letter-spacing: 3px !important;
+    overflow: hidden;
+    // border-right: 2px solid hsl(0, 0%, 80%);
+    /* Inicia con color hsl(0, 0%, 80%) */
+    white-space: nowrap;
+    animation: typewriterrr 3s steps(27)  1s 1 normal both ,
+      // blinkTextCursor 500ms 8 normal forwards;
+    /* Detener la animación después de 5 segundos y mantener el estado final */
+  }
+
+  .planetarytext2{
+    letter-spacing: 3px !important;
+    overflow: hidden;
+    // border-right: 2px solid hsl(0, 0%, 80%);
+    /* Inicia con color hsl(0, 0%, 80%) */
+    white-space: nowrap;
+    animation: typewriter 3s steps(48)  4s 1 normal both,
+      // blinkTextCursor 500ms 19 normal forwards;
+    /* Detener la animación después de 5 segundos y mantener el estado final */
+  }
+
+  .planetarytext3{
+    letter-spacing: 3px !important;
+    overflow: hidden;
+    border-right: 2px solid hsl(0, 0%, 80%);
+    /* Inicia con color hsl(0, 0%, 80%) */
+    white-space: nowrap;
+    animation: typewriterrr 4s steps(30) 7s infinite ,
+      blinkTextCursor 500ms infinite;
+    /* Detener la animación después de 5 segundos y mantener el estado final */
+  }
+
+  .errorfound{
+    letter-spacing: 3px !important;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 1s steps(48)  1s 1 normal both ,
+      blinkTextCursor 500ms infinite;
+  }
+
+  .errorfound1{
+    letter-spacing: 3px !important;
+    overflow: hidden;
+    border-right: 2px solid hsl(0, 0%, 80%);
+    white-space: nowrap;
+    animation: typewriter 1s steps(48)  2s 1 normal both ,
+      blinkTextCursor 500ms infinite;
+  }
+
+  .profmessage{
+    @extend .errorfound;
+    animation: typewriterprof 1s steps(48)  1s 1 normal both ,
+    blinkTextCursor 500ms infinite;
+  }
+
+  .profmessage2{
+    @extend .errorfound1;
+    animation: typewriterrr 1s steps(48)  2s 1 normal both ,
+    blinkTextCursor 500ms infinite;
+  }
+
+  .profmessage3{
+    @extend .errorfound1;
+    animation: typewriterprof 1s steps(48)  2.5s 1 normal both ,
+    blinkTextCursor 500ms infinite;
+
+    &__word{
+      color: var(--purple);
+      text-decoration: underline;
+    }
+  }
+
+  .profmessage4{
+    @extend .errorfound1;
+    animation: typewriterprof 1s steps(48) 1s 1 normal both ,
+    blinkTextCursor 500ms infinite;
+
+  }
+
+  .dalerobot{
+    width: 100% !important;
+    height: 100% !important ;
+  }
+    

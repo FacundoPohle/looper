@@ -2,14 +2,20 @@ $color-principal: linear-gradient(to right, #ff0000, #ff3333);
 
 $color-secundario: rgb(255, 255, 255);
 
-@mixin flexbox ($direccion, $eje-principal:center, $eje-secundario:center) {
-    display: flex;
-    flex-direction: $direccion;
-    justify-content: $eje-principal;
-    align-items: $eje-secundario;
+$titulos : 'Rubik Mono One',
+monospace;
+$subtitulos: 'Sofia Sans', sans-serif;
+$extra: 'Nunito', sans-serif;
+
+@mixin flexbox ($direccion, $eje-principal: center, $eje-secundario: center) {
+  display: flex;
+  flex-direction: $direccion;
+  justify-content: $eje-principal;
+  align-items: $eje-secundario;
 }
 
 $estilos: (
-        ancho: 320px,
-        alto: 240px    
-    );
+  ancho: 320px,
+  alto: 240px
+);
+

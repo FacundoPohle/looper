@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { useGralContext } from '../Utils/Context';
 import { useState, useEffect } from "react";
 import { useAnimate, stagger, motion } from "framer-motion";
 import { MenuButtonProfile, MenuButtonFilter } from "../MenusButton";
@@ -54,22 +53,6 @@ const Filters = () => {
     const [isOpen, setIsOpen] = useState(false);
     const scope = useMenuAnimation(isOpen);
     const [modalShow, setModalShow] = useState(false);
-    const { playlists, setPlaylists } = useGralContext();
-
-    // const { expanded, handleChange, isVisible, setIsVisible} = useGralContext();
-
-    // const handleMenuButtonClick = () => {
-    //     // Lógica para mostrar las playlists generadas
-    //     // Aquí podrías actualizar el estado de las playlists o cargarlas de alguna fuente de datos
-    //     // Por ahora, vamos a simular algunos datos de prueba
-    //     const samplePlaylists = [
-    //         { name: 'Playlist 1', samples: ['Sample 1', 'Sample 2'] },
-    //         { name: 'Playlist 2', samples: ['Sample 3', 'Sample 4'] }
-    //     ];
-    //     setPlaylists(samplePlaylists);
-
-    // };
-
 
     return (
         <div className="menu" ref={scope}>

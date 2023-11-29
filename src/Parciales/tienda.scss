@@ -1,6 +1,5 @@
 .Base {
-    margin-top: 6.5rem;
-    margin-bottom: 10rem;
+    margin-top: 6rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -14,8 +13,6 @@
         justify-content: center;
         align-items: center;
     }
-
-    
 }
 
 .anchoscroll{
@@ -87,6 +84,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 55rem;
     }
 
     &__acordeon {
@@ -96,17 +94,27 @@
         width: 17rem !important;
     }
 
+    &__buttons2{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
     &__buttons {
+        font-family: $subtitulos;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         gap: 1rem;
         padding-bottom: 1rem;
         width: 100%;
+        height: 3.5rem;
     }
 
     &__tracks {
-        width: 55rem;
+        width: 53rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -117,6 +125,9 @@
         border-radius: 15px;
         margin-top: 8px;
         margin-bottom: 8px;
+        font-family: $subtitulos;
+        font-size: 17px;
+
 
         &:hover {
             background-color: grayscale($color: #333333);
@@ -129,6 +140,7 @@
 
 // Canvas
 .filterMenu {
+
 
     height: 2.8rem;
 
@@ -335,3 +347,4 @@
     border-radius: inherit;
     cursor: -webkit-grabbing;
   }
+

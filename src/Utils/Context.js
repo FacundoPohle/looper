@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import samplesData from './samplesData';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
@@ -59,6 +59,24 @@ export function ContextProvider({ children }) {
       [filterType]: value,
     }));
   };
+
+  // Estado adicional para almacenar los nombres de los filtros
+  const [filterNames, setFilterNames] = useState([]);
+
+  // Función para actualizar los nombres de los filtros
+  const updateFilterNames = (names) => {
+    setFilterNames(names.join(', '));
+  };
+
+  useEffect(() => {
+    const names = Object.keys(selectedFilters)
+      .map((key) => selectedFilters[key])
+      .filter(Boolean);
+
+    // Actualiza el estado con los nombres de los filtros
+    updateFilterNames(names);
+    console.log('Filtros seleccionados:', filterNames);
+  }, [selectedFilters]);
 
   const handleResetFilters = () => {
     setSelectedFilters({
@@ -170,6 +188,23 @@ const [favoriteSamples, setFavoriteSamples] = useState([]);
 const addToFavorites = (sample) => {
   if (!favoriteSamples.includes(sample)) {
     setFavoriteSamples((prevFavorites) => [...prevFavorites, sample]);
+
+    Toastify({
+      text: "Successfully added favorites",
+      duration: 1500,
+      style: {
+        background: "linear-gradient(to right, #fc466b, #3f5efb, #fc466b)",
+      },
+    }).showToast();
+  } else {
+    // Si el sample ya está en el carrito, muestra una notificación de error
+    Toastify({
+      text: "This sample is already in your favorites",
+      duration: 1500,
+      style: {
+        background: "linear-gradient(to right, #ff0000, #ff3333)",
+      },
+    }).showToast();
   }
 };
 
@@ -183,6 +218,29 @@ const removeFromFavorites = (sample) => {
 
 const [playlists, setPlaylists] = useState([]);
 const [selectedPlaylist, setSelectedPlaylist] = useState(null)
+
+const deletePlaylist = () => {
+  // Verifica si hay una playlist seleccionada
+  if (selectedPlaylist) {
+    // Filtra las playlists para excluir la playlist seleccionada
+    const updatedPlaylists = playlists.filter((playlist) => playlist !== selectedPlaylist);
+
+    // Actualiza la lista de playlists
+    setPlaylists(updatedPlaylists);
+
+    // Elimina la selección de la playlist
+    setSelectedPlaylist(null);
+
+    // Mensaje de eliminación exitosa
+    Toastify({
+      text: `Playlist deleted successfully`,
+      duration: 1500,
+      style: {
+        background: "linear-gradient(to right, #ff0000, #ff3333)",
+      },
+    }).showToast();
+  }
+};
 
 const updatePlaylist = (updatedPlaylist) => {
   setPlaylists(prevPlaylists => {
@@ -246,7 +304,7 @@ const removeFromPlaylist = (sampleId) => {
 
 
   return (
-    <Context.Provider value={{removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart }}>
+    <Context.Provider value={{removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
       {children}
     </Context.Provider>
   );

@@ -17,13 +17,13 @@ const Robot = () => {
 
   return (
     <group ref={group}>
-      <hemisphereLight intensity={0.40} groundColor='black' />
-      {/* <pointLight intensity={1} />
-      <spotLight
-        position={[0, 0, 0]}
+      <hemisphereLight intensity={0.15}  />
+      {/* <pointLight intensity={50} /> */}
+       {/* <spotLight
+        position={[-20, 50, 10]}
         angle={0.8}
         penumbra={1}
-        intensity={1}
+        intensity={100}
         castShadow
         shadow-mapSize={1024}
       /> */}
