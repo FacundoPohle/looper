@@ -300,11 +300,14 @@ const removeFromPlaylist = (sampleId) => {
   }
 };
 
+const [isMobile, setIsMobile] = useState(false);
+
+
 
 
 
   return (
-    <Context.Provider value={{removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
+    <Context.Provider value={{isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
       {children}
     </Context.Provider>
   );

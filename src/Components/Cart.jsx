@@ -68,8 +68,8 @@ const Cart = () => {
                 ) : (
                     <div className='point__absolute--6'>
                         <Robot />
-                        <p className="titulos fs-6 errorfound">Your cart is empty.</p>
-                        <Link className='Links titulos fs-6 profmessage3' to="/tienda">Click <span className='profmessage3__word'>here</span> to check the store</Link>
+                        <p className="titulos  errorfound">Your cart is empty.</p>
+                        <Link className='Links titulos  profmessage3' to="/tienda">Click <span className='profmessage3__word'>here</span> to check the store</Link>
                     </div>
                 )}
 

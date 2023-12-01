@@ -6,7 +6,6 @@ import WaveSurfer from "./Components/Wavesurfer/WavePlayer";
 import { Link } from "react-router-dom";
 import { ContextProvider } from './Utils/Context';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Desplegable } from './Components/Profile/Desplegable';
 import MyProfle from './Components/Profile/MyProfile';
 import PlaylistSearcher from './Components/Profile/PlaylistSearcher';
 import RobotCanvas from './Components/Canvas/Robot';
@@ -16,7 +15,7 @@ const App = () => {
     <ContextProvider>
       <BrowserRouter>
       <NavBar />
-      <Desplegable/>
+      {/* <Header/> */}
       <Routes>
         <Route path='/' element={<div className='point__absolute--2'>
           <Link className='Links ' to="/tienda">

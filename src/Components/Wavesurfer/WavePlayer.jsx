@@ -1,13 +1,13 @@
 import React from 'react'
-import WaveSurferPlayer from "./WaveSurfer"
-import { useEffect, useState } from 'react';
 import { useGralContext } from '../../Utils/Context';
+import WaveSurferPlayer from "./WaveSurfer"
+import { useEffect } from 'react';
 import Timeline from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
 
 
 // Another React component that will render two wavesurfers
 const WaveSurfer = () => {
-const { currentSample } = useGralContext();
+const { currentSample, isMobile, setIsMobile } = useGralContext();
 
     // gradiente
     const ctx = document.createElement('canvas').getContext('2d')
@@ -19,7 +19,6 @@ const { currentSample } = useGralContext();
     // Render the wavesurfer component
     // and a button to load a different audio file
 
-    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         // Add a listener for changes to the screen size
@@ -29,8 +28,8 @@ const { currentSample } = useGralContext();
         setIsMobile(mediaQuery.matches);
     
         // Define a callback function to handle changes to the media query
-        const handleMediaQueryChange = (event) => {
-          setIsMobile(event.matches);
+        const handleMediaQueryChange = () => {
+          setIsMobile(mediaQuery.matches);
         };
     
         // Add the callback function as a listener for changes to the media query
@@ -46,7 +45,7 @@ const { currentSample } = useGralContext();
         <>
             <WaveSurferPlayer
                 waveColor= {gradient}
-                height={isMobile ? 50 : 60}
+                height={isMobile ? 30 : 60}
                 // waveColor="#9900ff"
                 progressColor="#fafafa"
                 barWidth={2}

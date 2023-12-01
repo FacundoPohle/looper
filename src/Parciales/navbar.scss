@@ -3,6 +3,16 @@
     background-color: var(--black) !important;
     font-family: $titulos;
 
+    &__storeprofile{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+    }
+    &__logincart{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
 }
 
 .ntitle {
@@ -39,6 +49,7 @@
     align-items: center;
     height: 3rem;
     margin-top: 0.5rem;
+    margin-left: 4rem;
     padding: 0.5rem;
     width: 6rem;
     border-radius: 3px;

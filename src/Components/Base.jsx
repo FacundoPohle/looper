@@ -4,9 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import AcordeonFilter from "./Acordeon";
 import { motion } from "framer-motion";
-import RobotCanvas from './Canvas/Robot'
-// import PlanetaryCanvas from "./Canvas/Planet";
-import IonCanvas from "./Canvas/Ion";
 import PlanetaryCanvas from "./Canvas/Planet";
 
 
@@ -38,10 +35,9 @@ const Base = () => {
                     {/* <Filters/> */}
                     <div className='point__absolute'>
                         <PlanetaryCanvas />
-                        <p className='titulos fs-5 planetarytext1'>There is</p>
-                        <p className='titulos fs-5 planetarytext2'>a world of sounds</p>
-                        <p className='titulos fs-5 planetarytext3'>for you</p>
-
+                        <p className='titulos planetarytext1'>There is</p>
+                        <p className='titulos planetarytext2'>a world of sounds</p>
+                        <p className='titulos planetarytext3'>for you</p>
                     </div>
 
                     <Offcanvas backdrop={true} className='filterMenu__canvas' show={show} onHide={handleClose}>
@@ -69,7 +65,7 @@ const Base = () => {
                                     <Button variant='dark' onClick={toggleShow}>
                                         FILTERS
                                     </Button>
-                                    <Button variant='dark' onClick={handleResetFilters}>RESET FILTERS</Button> {/* Botón para restablecer los filtros */}
+                                    <Button variant='dark' onClick={handleResetFilters}>RESET</Button> {/* Botón para restablecer los filtros */}
                                     {/* Resto de tu interfaz */}
                                 </div>
                             </div>

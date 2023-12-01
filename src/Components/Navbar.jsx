@@ -14,22 +14,22 @@ function NavBar() {
 
   return (
     <Navbar fixed='top' className="navbar">
-      <Container fluid>
-        <div className='d-flex flex-row justify-content-start'>
-          <Link className='Links ntitle fromLeft' to="/tienda">Storee</Link>
+      <Container fluid className='navbar__menu'>
+        <div className='navbar__storeprofile'>
+          <Link className='Links ntitle fromLeft' to="/tienda">Store</Link>
 
           <Link className='Links ntitlee fromLeft' to='/myprofile'>My profile</Link>
         </div>
 
-        <div className='d-flex flex-row justify-content-end'>
+        <div className='navbar__logincart'>
           <div className='Links ntitle2 login text-end' onClick={() => setModalShow(true)}>
-        Login
+            Login
           </div>
-            <Login
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
-          <Link className='Links ntitle' to="/cart"><CartWidget /></Link>
+          <Login
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+          <Link className='Links ntitle ' to="/cart"><CartWidget/></Link>
         </div>
       </Container>
     </Navbar>
