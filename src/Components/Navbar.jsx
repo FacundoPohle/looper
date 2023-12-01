@@ -16,7 +16,7 @@ function NavBar() {
     <Navbar fixed='top' className="navbar">
       <Container fluid>
         <div className='d-flex flex-row justify-content-start'>
-          <Link className='Links ntitle fromLeft' to="/tienda">Store</Link>
+          <Link className='Links ntitle fromLeft' to="/tienda">Storee</Link>
 
           <Link className='Links ntitlee fromLeft' to='/myprofile'>My profile</Link>
         </div>
