@@ -37,7 +37,7 @@ const Planetary = () => {
       />
       <primitive object={scene}
         scale={0.90}
-        position={[58, -15, 186]}
+        position={[58, -25, 186]}
         rotation-y={0}/>
     </group>
   );

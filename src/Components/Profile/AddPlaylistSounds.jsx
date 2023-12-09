@@ -15,7 +15,7 @@ function AddPlaylistSounds(props) {
   const notFoundMessage = (
     <div className='point__absolute--8'>
         <Robot />
-        <Link className='Links fs-6 profmessage4 titulos' to="/tienda">you should <span className='profmessage3__word'>add</span> some favorites</Link>
+        <Link className='Links profmessage4 titulos' to="/tienda">you should <span className='profmessage3__word'>add</span> some favorites</Link>
     </div>
 
 );

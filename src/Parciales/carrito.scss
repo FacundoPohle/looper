@@ -4,7 +4,7 @@
 }
 
 .css-jcn4dz-MuiBadge-badge{
-    background-color: var(--purple) !important;
+    background-color: var(--background) !important;
 }
 
 .carro {
@@ -46,7 +46,7 @@
         padding-top: 1rem;
 
         &--color{
-            color: var(--purple);
+            color: var(--background);
             font: bold;
         }
     }

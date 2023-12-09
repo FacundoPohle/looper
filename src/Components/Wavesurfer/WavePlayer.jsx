@@ -1,18 +1,18 @@
 import React from 'react'
 import { useGralContext } from '../../Utils/Context';
 import WaveSurferPlayer from "./WaveSurfer"
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import Timeline from 'https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js'
-
 
 // Another React component that will render two wavesurfers
 const WaveSurfer = () => {
-const { currentSample, isMobile, setIsMobile } = useGralContext();
+const { currentSample, isMobile, setIsMobile, dynamicColor } = useGralContext();
+
 
     // gradiente
     const ctx = document.createElement('canvas').getContext('2d')
     const gradient = ctx.createLinearGradient(0, 0, 0, 150)
-    gradient.addColorStop(0, '#9900ff')
+    gradient.addColorStop(0, dynamicColor)
     gradient.addColorStop(0.7, 'rgb(100, 0, 100)')
     gradient.addColorStop(1, 'rgb(0, 0, 0)')
 

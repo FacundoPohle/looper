@@ -9,7 +9,9 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { motion } from "framer-motion"
 import { useGralContext } from '../Utils/Context';
 import { Link } from "react-router-dom";
-import Robot from './Canvas/Robot'
+import Robot from './Canvas/Robot';
+import Typewriter from 'typewriter-effect';
+
 
 
 
@@ -28,7 +30,7 @@ const Cart = () => {
     return (
         < div className='carro__display'>
             <div className='carro point'>
-                <h2 className='titulos'>Cart</h2>
+                <h2 className='titulos__cart'>Cart</h2>
                 {ctx.cartList && ctx.cartList.length > 0 ? (
                     <>
                         <ul className='ul3 ps-0'>
@@ -68,8 +70,21 @@ const Cart = () => {
                 ) : (
                     <div className='point__absolute--6'>
                         <Robot />
-                        <p className="titulos  errorfound">Your cart is empty.</p>
-                        <Link className='Links titulos  profmessage3' to="/tienda">Click <span className='profmessage3__word'>here</span> to check the store</Link>
+                        <div className='titulos mob typewriterwidth__forcart'>
+                            <Typewriter
+                                options={{
+                                    loop: true,
+                                }}
+                                onInit={(typewriter) => {
+                                    typewriter.typeString(`your cart is empty! You should go to the store!`)
+                                        .pauseFor(2500)
+                                        .deleteAll()
+                                        .start();
+                                }}
+                            />
+                        </div>
+                        <p className="titulos notmob errorfound">Your cart is empty.</p>
+                        <Link className='Links titulos notmob profmessage3' to="/tienda">Click <span className='profmessage3__word'>here</span> to check the store</Link>
                     </div>
                 )}
 

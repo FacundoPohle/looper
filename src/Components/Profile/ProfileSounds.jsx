@@ -5,13 +5,12 @@ import React, { useEffect } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Robot from '../Canvas/Robot'
-
+import Robot from '../Canvas/Robot';
+import Typewriter from 'typewriter-effect';
 
 
 function ProfileSounds() {
-    const {  favoriteSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, removeFromFavorites } = useGralContext();
+    const { favoriteSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, removeFromFavorites } = useGralContext();
 
 
     // Esta función maneja la reproducción de un sample
@@ -26,10 +25,22 @@ function ProfileSounds() {
 
     // Mensaje a mostrar cuando no se encuentran resultados
     const notFoundMessage = (
-        <div className='point__absolute--5'>
-            <Robot/>
-            <p className="titulos fs-6 profmessage">You didn't select sounds yet!</p>
-            <Link className='Links fs-6 profmessage2 titulos' to="/tienda">go <span className='profmessage3__word'>check</span> some</Link>
+        <div className='point__absolute--5b'>
+            <Robot />
+            <div className='titulos typewriterwidth__forprofile'>
+                <Typewriter
+                    options={{
+                        loop: true,
+                        delay: 70
+                    }}
+                    onInit={(typewriter) => {
+                        typewriter.typeString(`there aren't sounds on your profile yet! Go add some! click the button explore`)
+                            .pauseFor(2500)
+                            .deleteAll()
+                            .start();
+                    }}
+                />
+            </div>
         </div>
     );
 

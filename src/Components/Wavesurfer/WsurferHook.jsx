@@ -9,7 +9,7 @@ import WaveSurfer from 'wavesurfer.js'
 // WaveSurfer hook
 const useWavesurfer = (containerRef, options) => {
   const [wavesurfer, setWavesurfer] = useState(null)
-const { currentSample, isMobile } = useGralContext();
+const { currentSample, isMobile, dynamicColor } = useGralContext();
 
 
   // Initialize wavesurfer when the container mounts
@@ -27,7 +27,7 @@ const { currentSample, isMobile } = useGralContext();
     return () => {
       ws.destroy()
     }
-  }, [currentSample, isMobile])
+  }, [currentSample, isMobile, dynamicColor])
 
 
   return wavesurfer

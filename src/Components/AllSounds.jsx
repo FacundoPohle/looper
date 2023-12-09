@@ -5,7 +5,8 @@ import React, { useEffect } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion"
-import Robot from './Canvas/Robot'
+import Robot from './Canvas/Robot';
+import Typewriter from 'typewriter-effect';
 
 
 function AllSounds() {
@@ -24,16 +25,28 @@ function AllSounds() {
 
     // Mensaje a mostrar cuando no se encuentran resultados
     const notFoundMessage = (
-            <div className='point__absolute--5'>
-                <Robot/>
-                <p className='titulos fs-6 errorfound'>Something is missing</p>
-                <p className='titulos fs-6 errorfound1'>Try reseting filters</p>
+        <div className='point__absolute--5'>
+            <Robot />
+            <div className='titulos typewriterwidth__forfilters'>
+                <Typewriter
+                    options={{
+                        delay: 70,
+                        loop: true,
+                    }}
+                    onInit={(typewriter) => {
+                        typewriter.typeString(`Something is missing, try reseting the filters `)
+                            .pauseFor(2500)
+                            .deleteAll()
+                            .start();
+                    }}
+                />
             </div>
+        </div>
     );
 
     return (
         <div className='anchoscroll'>
-            <div className='scroll my-2'>
+            <div className='scroll'>
                 {filteredSamples.length === 0 ? (
                     notFoundMessage
                 ) : (

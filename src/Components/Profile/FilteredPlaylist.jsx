@@ -13,6 +13,7 @@ const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
 function useMenuAnimation(isOpen: boolean) {
     const [scope, animate] = useAnimate();
+    const heightValue = isOpen ? "320px" : "0px";
 
 
     useEffect(() => {
@@ -23,7 +24,10 @@ function useMenuAnimation(isOpen: boolean) {
             {
                 clipPath: isOpen
                     ? "inset(0% 0% 0% 0% round 10px)"
-                    : "inset(10% 50% 90% 50% round 10px)"
+                    : "inset(10% 50% 90% 50% round 10px)",
+                    height: heightValue, 
+                    marginBottom: isOpen ? "1rem" : "0"
+
             },
             {
                 type: "spring",

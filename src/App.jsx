@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyProfle from './Components/Profile/MyProfile';
 import PlaylistSearcher from './Components/Profile/PlaylistSearcher';
 import RobotCanvas from './Components/Canvas/Robot';
+import Typewriter from 'typewriter-effect';
+
 
 const App = () => {
   return (
@@ -18,10 +20,24 @@ const App = () => {
       {/* <Header/> */}
       <Routes>
         <Route path='/' element={<div className='point__absolute--2'>
-          <Link className='Links ' to="/tienda">
+          <Link className='Links' to="/tienda">
             <RobotCanvas/>
-            <p className='titulos fs-3 point__absolute--3 entrance'>Hello there!</p>
-              <p className='titulos fs-3 point__absolute--4 entrance2'>Click me</p>
+            <div className='titulos mob typewriterwidth__welcome'>
+                <Typewriter
+                    options={{
+                        delay: 70,
+                        loop: true,
+                    }}
+                    onInit={(typewriter) => {
+                        typewriter.typeString(`Hello there! click me !`)
+                            .pauseFor(2500)
+                            .deleteAll()
+                            .start();
+                    }}
+                />
+            </div>
+            <p className='titulos fs-3 notmob point__absolute--3 entrance'>Hello there!</p>
+              <p className='titulos fs-3 notmob point__absolute--4 entrance2'>Click me</p>
             </Link>
           </div>}>
           </Route>

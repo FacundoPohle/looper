@@ -17,7 +17,7 @@ import { Slider } from '@mui/material';
 // Create a React component that will render wavesurfer.
 // Props are wavesurfer options.
 const WaveSurferPlayer = (props) => {
-  const { currentAudioName, setCurrentSample, currentSample } = useGralContext();
+  const { currentAudioName, setCurrentSample, currentSample, dynamicColor } = useGralContext();
 
   const containerRef = useRef()
   const [isPlaying, setIsPlaying] = useState(false)
@@ -129,7 +129,7 @@ const WaveSurferPlayer = (props) => {
           </div>
         </div>
         <p className='wavesurfer__info--p2 titulos'>{currentAudioName ? currentAudioName : 'Sample de prueba'}</p>
-        <p className='wavesurfer__info--p'> <span style={{ color: '#9900ff' }}>{currentTimeInMinutes}</span> / {durationInMinutes}</p>
+        <p className='wavesurfer__info--p'> <span className='principal'>{currentTimeInMinutes}</span> / {durationInMinutes}</p>
         <div className='volume'>
           {isMuted ? (
             <VolumeOffIcon onClick={toggleMute} style={{ cursor: 'pointer' }} />

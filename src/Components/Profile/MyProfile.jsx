@@ -23,11 +23,14 @@ const MyProfile = () => {
                         <div className="sounds__samples point">
                             {favoriteSamples.length === 0 ?
                                 <div className="sounds__buttons">
-                                    <Button variant='dark' ><Link className="Links subtitulos fs-6" to="/tienda">GO EXPLORE</Link></Button>
+                                    <Button className="zindex" variant='dark' ><Link className="Links subtitulos fs-6" to="/tienda">EXPLORE</Link></Button>
                                 </div> :
-                                <div className="d-flex flex-row justify-content-between w-100">
-                                    <p className="titulos fs-6">These are your favorites samples</p>
-                                    <Button variant='dark' ><Link className="Links subtitulos fs-6" to="/tienda">GO EXPLORE</Link></Button>
+                                <div className="d-flex flex-row justify-content-between gap-5 w-100">
+                                    <p className="titulos notmob fs-6">These are your favorites samples</p>
+                                    <p className="titulos mob mb-3">Your favorites samples</p>
+                                    <div className="sounds__buttons">
+                                    <Button variant='dark' ><Link className="Links subtitulos fs-6" to="/tienda">EXPLORE</Link></Button>
+                                    </div>
                                 </div>}
                             <ProfileSounds />
                         </div>

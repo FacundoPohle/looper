@@ -1,4 +1,28 @@
 //animaciones
+.typewriterwidth{
+  &__welcome{
+    font-size: large;
+    margin-inline: auto;
+    height: 4rem;
+    width: 200px;
+  }
+
+  &__forfilters{
+    height: 4rem;
+    width: 300px;
+    margin-bottom: 4rem;
+  }
+
+  &__forprofile{
+    height: 4.5rem;
+    width: 300px;
+  }
+
+  &__forcart{
+    height: 3.5rem;
+    width: 240px;
+  }
+}
 
 .entrance {
     letter-spacing: 7px !important;
@@ -84,6 +108,7 @@
   }
 
   .planetarytext1{
+    height: 2rem;
     letter-spacing: 3px !important;
     overflow: hidden;
     white-space: nowrap;
@@ -91,6 +116,7 @@
   }
 
   .planetarytext2{
+    height: 2rem;
     letter-spacing: 3px !important;
     overflow: hidden;
     white-space: nowrap;
@@ -98,6 +124,7 @@
   }
 
   .planetarytext3{
+    height: 2rem;
     letter-spacing: 3px !important;
     overflow: hidden;
     border-right: 2px solid hsl(0, 0%, 80%);
@@ -141,7 +168,7 @@
     blinkTextCursor 500ms infinite;
 
     &__word{
-      color: var(--purple);
+      color: var(--background);
       text-decoration: underline;
     }
   }
@@ -158,3 +185,61 @@
     height: 100% !important ;
   }
     
+//
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+.containery {
+  display: flex;
+  height: 10%;
+  align-items: center;
+}
+
+.loopertitle {
+    display: block;
+    font: 10.5em 'Montserrat';
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;
+}
+.loopertitleSm {
+    @extend .loopertitle;
+    font: 8.5em 'Montserrat';
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+	stroke: #4D163D;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: var(--black);
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #840037;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: var(--black);
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #FDB731;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}

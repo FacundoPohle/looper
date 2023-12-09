@@ -5,14 +5,9 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import AcordeonFilter from "./Acordeon";
 import { motion } from "framer-motion";
 import PlanetaryCanvas from "./Canvas/Planet";
-
-
-
-
+import {AnimatedTitle, AnimatedTitleSm} from "./Animations/Lines";
 
 // Animacion filtros
-
-
 
 const Base = () => {
 
@@ -34,7 +29,9 @@ const Base = () => {
                 <div className="sounds point">
                     {/* <Filters/> */}
                     <div className='point__absolute'>
+                        <AnimatedTitle title='LOOPER'/>
                         <PlanetaryCanvas />
+                        <AnimatedTitleSm title='world of sounds'/>
                         <p className='titulos planetarytext1'>There is</p>
                         <p className='titulos planetarytext2'>a world of sounds</p>
                         <p className='titulos planetarytext3'>for you</p>
@@ -60,7 +57,7 @@ const Base = () => {
                     >
                         <div className="sounds__samples point">
                             <div className="sounds__buttons2">
-                                <p className="playlist__title titulos fs-6 text-start pt-1 w-100 ">{filterNames ? <p><span className="playlist__title2 ps-0">Filters: </span> {filterNames}</p> : <p><span className="playlist__title2 ps-0">These are </span>All the sounds</p>}</p>
+                                <p className="playlist__title fs-6 titulos pt-1 mb-1 ">{filterNames ? <p><span className="playlist__title2  ps-0">Filters: </span> {filterNames}</p> : <p><span className="playlist__title2 ps-0">These are </span>All the sounds</p>}</p>
                                 <div className="sounds__buttons">
                                     <Button variant='dark' onClick={toggleShow}>
                                         FILTERS

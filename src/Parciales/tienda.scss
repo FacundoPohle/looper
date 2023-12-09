@@ -28,7 +28,8 @@
     justify-content: center;
     width: 100%;
     height: 20rem;
-    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
     overflow-y: scroll;
 }
 
@@ -123,7 +124,6 @@
         background-color: #111;
         transition: 0.6s;
         border-radius: 15px;
-        margin-top: 8px;
         margin-bottom: 8px;
         font-family: $subtitulos;
         font-size: 17px;
@@ -166,7 +166,7 @@
 // Canvas select
 // Select selected
 .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: var(--purple) !important;
+    border-color: var(--background) !important;
     border-radius: 10px !important;
 }
 
@@ -178,7 +178,7 @@
 
 // input selected
 .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-    color: var(--purple) !important;
+    color: var(--background) !important;
     margin-top: 0.25rem;
 }
 
@@ -200,13 +200,13 @@
 
     // icono del select
     .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon{
-        color: var(--purple) !important;
+        color: var(--background) !important;
     }
 
 
     //Autocomplete selected
     .css-1xlegob-MuiAutocomplete-root.Mui-focused .MuiOutlinedInput-notchedOutline{
-        border-color: var(--purple) !important;
+        border-color: var(--background) !important;
         border-radius: 10px !important;
 
     }
@@ -224,12 +224,12 @@
 
 //Autocomplete cruz
 .css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator{
-   color: var(--purple) !important;
+   color: var(--background) !important;
 }
 
 //Autocomplete pop indicator
 .css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator{
-   color: var(--purple) !important;
+   color: var(--background) !important;
 
 }
     
@@ -238,17 +238,14 @@
     opacity: 0 !important;
 }
 
-  .menu {
-    // filter: drop-shadow(1px 1px 1px #5116a9);
-    width: 300px;
-  }
+
   
   .ul {
     display: flex;
     flex-direction: column;
     background: var(--black);
     padding: 1rem 0 0 0 ;
-    height: 20rem !important;
+    // height: 20rem !important;
   }
 
   .ul2 {
@@ -271,7 +268,7 @@
 }
 
 .ul::-webkit-scrollbar-thumb {
-    background-color: var(--purple);
+    background-color: var(--background);
     border-radius: 4px;
 }
 
@@ -293,7 +290,7 @@
     color: var(--white) !important;
     
     &:hover{
-        color: var(--purple)!important;
+        color: var(--background)!important;
     }
     }
 
@@ -343,7 +340,7 @@
   .iteme {
     width: 150px;
     height: 150px;
-    background: var(--purple);
+    background: var(--background);
     border-radius: inherit;
     cursor: -webkit-grabbing;
   }

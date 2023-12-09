@@ -7,9 +7,6 @@
     -webkit-font-smoothing: antialiased;
 }
 
-
-
-
   @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik+Mono+One&family=Sofia+Sans:wght@400;500;700&display=swap');
 
 a {
@@ -21,6 +18,7 @@ a {
     text-decoration: inherit;
     color: white;
 }
+
 
 a:hover {
     color: rgb(255, 255, 255);
@@ -50,7 +48,7 @@ body {
     --orange: #fd7702;
     --yellow: #ffbb00;
   
-    --background: var(--purple);
+    --background: var(--dynamic);
     --accent: var(--white);
     font-family: 'Nunito', sans-serif;
     // font-family: 'Rubik Mono One', monospace;
@@ -62,9 +60,8 @@ body {
 
 
 .principal{
-    color: var(--purple) ;
+    color: var(--background);
 }
-
 
 // body::-webkit-scrollbar {
 //     width: 8px;
@@ -125,6 +122,14 @@ body {
       align-items: center;
     }
 
+    &__absolute--5b{
+      @extend .point__absolute--5;
+    }
+
+    &__absolute--5c{
+      @extend .point__absolute--5;
+    }
+
     &__absolute--6{
       @extend .point__absolute--5;
       top: 1rem;
@@ -133,8 +138,8 @@ body {
 
     &__absolute--7{
       @extend .point__absolute--5;
-      top: 3rem;
-      left: 40rem;
+      top: -1rem;
+      left: 10rem;
     }
     
     &__absolute--8{
@@ -149,9 +154,17 @@ body {
   }
 
   .subtitulos{
-    font-family: $subtitulos;
+    font-family: 'Sofia Sans', sans-serif;;
   }
 
   .titulos{
-    font-family: $titulos;
+    font-family: 'Rubik Mono One';
+    
+    &__cart{
+      font-family: 'Rubik Mono One';
+    }
   }
+
+.zindex{
+  z-index: 1;
+}

@@ -19,14 +19,14 @@ const PlaylistSearcher = () => {
                         dragConstraints={constraintsRef}
                         />
                     </motion.div> */}
-                <div className="myProfile__sounds ">
+                <div className="myProfile__sounds2 ">
                     <FiltersPlaylist />
-                        <div className="sounds__samples">
+                        <div className="sounds__samples point">
                             <div className="sounds__buttons2">
-                                <p className="playlist__title titulos mt-2 fs-6">{selectedPlaylist && <p><span className='playlist__title2'>Playlist: </span>{selectedPlaylist.name}</p>}</p>
+                                {selectedPlaylist && <p className="playlist__title titulos mt-2 fs-6"> <p><span className='playlist__title2'>Playlist: </span>{selectedPlaylist.name}</p></p>}
                                 <div className="sounds__buttons">
-                                    <Button variant='dark' ><Link className="Links" to="/myprofile">GO MY PROFILE</Link></Button>
-                                    <Button variant='dark' ><Link className="Links" to="/tienda">GO EXPLORE</Link></Button>
+                                    <Button variant='dark' ><Link className="Links" to="/myprofile">PROFILE</Link></Button>
+                                    <Button variant='dark' ><Link className="Links" to="/tienda">EXPLORE</Link></Button>
                                 </div>
                             </div>
                             <PlaylistSounds />
