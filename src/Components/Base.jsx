@@ -57,7 +57,7 @@ const Base = () => {
                     >
                         <div className="sounds__samples point">
                             <div className="sounds__buttons2">
-                                <p className="playlist__title fs-6 titulos pt-1 mb-1 ">{filterNames ? <p><span className="playlist__title2  ps-0">Filters: </span> {filterNames}</p> : <p><span className="playlist__title2 ps-0">These are </span>All the sounds</p>}</p>
+                                <p className="playlist__title ps-0 fs-6 titulos pt-1 mb-1 ">{filterNames ? <p className='ps-0'><span className="playlist__title2  ps-0">Filters: </span> {filterNames}</p> : <p className='ps-0'><span className="playlist__title2 ps-0">These are </span>All the sounds</p>}</p>
                                 <div className="sounds__buttons">
                                     <Button variant='dark' onClick={toggleShow}>
                                         FILTERS

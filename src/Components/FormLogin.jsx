@@ -1,3 +1,4 @@
+import { Height } from "@mui/icons-material";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 
@@ -35,7 +36,7 @@ function Formulario() {
         <div className="modal-content__width">
           <div>
             <div className="modal-content__labels">
-              <label >Nombre:</label>
+              <label >Name:</label>
               <input
                 type="text"
                 name="nombre"
@@ -49,18 +50,18 @@ function Formulario() {
                 })}
               />
             </div>
-            {errors.nombre?.type === "required" && <span className="modal-content__span">Nombre requerido</span>}
+            {errors.nombre?.type === "required" && <span className="modal-content__span">Name required</span>}
             {errors.nombre?.type === "maxLength" && (
-              <span className="modal-content__span">Nombre no debe ser mayor a 20 caracteres</span>
+              <span className="modal-content__span">Name must not be longer than 20 characters</span>
             )}
             {errors.nombre?.type === "minLength" && (
-              <span className="modal-content__span">Nombre debe ser mayor a 2 caracteres</span>
+              <span className="modal-content__span">Name must be longer than 2 characters</span>
             )}
           </div>
 
           <div>
             <div className="modal-content__labels">
-              <label>Correo Electrónico:</label>
+              <label>Email adress:</label>
               <input
                 type="email"
                 name="correo"
@@ -81,7 +82,7 @@ function Formulario() {
 
           <div>
             <div className="modal-content__labels">
-              <label>Fecha de Nacimiento:</label>
+              <label>Date of birth:</label>
               <input
                 type="date"
                 name="fechaNacimiento"
@@ -89,14 +90,14 @@ function Formulario() {
                 {...register("fechaNacimiento", {
                   required: {
                     value: true,
-                    message: "Fecha de nacimiento es requerida",
+                    message: "Date of birth required",
                   },
                   validate: (value) => {
                     const fechaNacimiento = new Date(value);
                     const fechaActual = new Date();
                     const edad =
                       fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-                    return edad >= 18 || "Debes ser mayor de edad";
+                    return edad >= 18 || "You must be of legal age";
                   },
                 })}
               />
@@ -110,18 +111,18 @@ function Formulario() {
         <div className="modal-content__width">
           <div>
             <div className="modal-content__labels">
-              <label>Contraseña:</label>
+              <label>Password:</label>
               <input
                 type="password"
                 name="password"
                 {...register("password", {
                   required: {
                     value: true,
-                    message: "Contraseña es requerida",
+                    message: "Password required",
                   },
                   minLength: {
                     value: 6,
-                    message: "Contraseña debe ser mayor a 6 caracteres",
+                    message: "Password must be longer than 6 characters",
                   },
                 })}
               />
@@ -131,21 +132,21 @@ function Formulario() {
 
           <div>
             <div className="modal-content__labels">
-              <label>Confirma Contraseña:</label>
+              <label>Confirm:</label>
               <input
                 type="password"
                 name="confirmarPassword"
                 {...register("confirmarPassword", {
                   required: {
                     value: true,
-                    message: "Confirmar contraseña es requerida",
+                    message: "Confirm password is required",
                   },
                   minLength: {
                     value: 6,
-                    message: "Confirmar contraseña debe ser mayor a 6 caracteres",
+                    message: "Confirm password must be longer than 6 charaters",
                   },
                   validate: (value) =>
-                    value === password.current || "Las contraseñas no coinciden",
+                    value === password.current || "Passwords do not match",
                 })}
               />
             </div>
@@ -156,7 +157,7 @@ function Formulario() {
 
           <div>
             <div className="modal-content__labels">
-              <label htmlFor="pais">Pais:</label>
+              <label htmlFor="pais">Country:</label>
               <select name="pais" id="pais" 
               {...register("pais")}>
                 <option value="mx">México</option>
@@ -193,11 +194,11 @@ function Formulario() {
             },
           })}
         />
-        <label>Acepto los términos y condiciones</label>
+        <label>I accept terms and conditions</label>
         {errors.aceptaTerminos && <span className="modal-content__span">{errors.aceptaTerminos.message}</span>}
       </div>
 
-      <button type="submit" className="modal-content__button">Enviar</button>
+      <button type="submit" className="modal-content__button">Send</button>
 
       {/* <pre style={{ width: "400px" }}>{JSON.stringify(watch(), null, 2)}</pre> */}
       <h3 className="principal">Welcome {watch("nombre")} !</h3>

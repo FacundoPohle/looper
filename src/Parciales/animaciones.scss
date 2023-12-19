@@ -6,6 +6,13 @@
     height: 4rem;
     width: 200px;
   }
+  
+  &__modal{
+    font-size: large;
+    margin-inline: auto;
+    height: 4rem;
+    width: 300px;
+  }
 
   &__forfilters{
     height: 4rem;
@@ -14,12 +21,12 @@
   }
 
   &__forprofile{
-    height: 4.5rem;
+    height: 6rem;
     width: 300px;
   }
 
   &__forcart{
-    height: 3.5rem;
+    height: 4rem;
     width: 240px;
   }
 }

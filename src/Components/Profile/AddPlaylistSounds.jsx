@@ -6,16 +6,29 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import Robot from '../Canvas/Robot'
-import { Link } from "react-router-dom";
+import Typewriter from 'typewriter-effect';
+// import { Link } from "react-router-dom";
 
 function AddPlaylistSounds(props) {
   const { addToPlaylist, favoriteSamples, setCurrentSample, setCurrentAudioName, addToCart } = useGralContext();
 
   const notFoundMessage = (
     <div className='point__absolute--8'>
-        <Robot />
-        <Link className='Links profmessage4 titulos' to="/tienda">you should <span className='profmessage3__word'>add</span> some favorites</Link>
+                  <div className='titulos typewriterwidth__modal'>
+                <Typewriter
+                    options={{
+                        delay: 70,
+                        loop: true,
+                    }}
+                    onInit={(typewriter) => {
+                        typewriter.typeString(`Add some sounds in your favorite list first!`)
+                            .pauseFor(2500)
+                            .deleteAll()
+                            .start();
+                    }}
+                />
+            </div>
+        {/* <Link className='Links profmessage4 titulos' to="/tienda">you should <span className='profmessage3__word'>add</span> some favorites</Link> */}
     </div>
 
 );
@@ -39,7 +52,7 @@ function AddPlaylistSounds(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='px-5'>
-        <ul className='scroll3 ps-0 py-1'>
+        <ul className='scroll3'>
           {favoriteSamples.length > 0 ? favoriteSamples.map(sampleData => (
             <div className='sounds__tracks w-100' key={sampleData.id}>
               <li className='text-start'>{sampleData.name}</li>

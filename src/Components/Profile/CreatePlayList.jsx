@@ -91,7 +91,7 @@ function CreatePlaylist(props) {
           )}
 
           <Modal.Footer className='px-0 mt-5' >
-            <button type='submit' className='createPlaylist__save'>Save</button>
+            <button type='submit'onClick={props.onHide} className='createPlaylist__save'>Save</button>
             <Button variant='dark' onClick={props.onHide}>Cancel</Button>
           </Modal.Footer>
         </form>

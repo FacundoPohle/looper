@@ -6,13 +6,10 @@ import CreatePlaylist from "./CreatePlayList";
 import { useGralContext } from '../../Utils/Context';
 import { Link } from "react-router-dom";
 
-
-
-
-
 const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
 function useMenuAnimation(isOpen: boolean) {
+    const { isMobile } = useGralContext();
     const [scope, animate] = useAnimate();
     const heightValue = isOpen ? "320px" : "0px";
 
@@ -26,8 +23,8 @@ function useMenuAnimation(isOpen: boolean) {
                 clipPath: isOpen
                     ? "inset(0% 0% 0% 0% round 10px)"
                     : "inset(10% 50% 90% 50% round 10px)",
-                    height: heightValue, 
-                    marginBottom: isOpen ? "1rem" : "0"
+                height: heightValue,
+                marginBottom: isMobile && isOpen ? "1rem" : "0"
             },
             {
                 type: "spring",
@@ -79,14 +76,14 @@ const Filters = () => {
                     clipPath: "inset(10% 50% 90% 50% round 10px)"
                 }}
             >
-                    <li className="li mt-2">
-                    <Link to='/playlist'><MenuButtonFilter title='My Playlists' /></Link>
-                    </li>
                 <li className="li mt-2">
-                    <MenuButtonProfile title='Collection' />
+                    <Link to='/playlist'><MenuButtonFilter title='My Playlists' /></Link>
                 </li>
                 <li className="li mt-2">
-                    <MenuButtonProfile title='Downloads' />
+                    <Link to='/collection'><MenuButtonFilter title='Collection' /></Link>
+                </li>
+                <li className="li mt-2">
+                    <Link to='/downloads'><MenuButtonFilter title='Downloads' /></Link>
                 </li>
                 <li className="li mt-2">
                     <MenuButtonProfile title='+ Create Playlist' evento={() => setModalShow(true)} />

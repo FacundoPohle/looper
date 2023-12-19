@@ -1,16 +1,15 @@
 import { useGralContext } from '../../Utils/Context';
 import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';
-import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
+import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import React, { useEffect } from 'react';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
 import Robot from '../Canvas/Robot';
 import Typewriter from 'typewriter-effect';
 
 
-function ProfileSounds() {
-    const { favoriteSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, removeFromFavorites } = useGralContext();
+function CollectionSounds() {
+    const {  setCurrentSample, currentSample, setCurrentAudioName, purchasedSamples, download } = useGralContext();
 
 
     // Esta función maneja la reproducción de un sample
@@ -34,7 +33,7 @@ function ProfileSounds() {
                         delay: 70
                     }}
                     onInit={(typewriter) => {
-                        typewriter.typeString(`Go add some favorites! click the button explore`)
+                        typewriter.typeString(`Buy some sounds from the store first!`)
                             .pauseFor(2500)
                             .deleteAll()
                             .start();
@@ -47,12 +46,12 @@ function ProfileSounds() {
     return (
         <div className='anchoscroll '>
             <div className='scroll my-2'>
-                {favoriteSamples.length === 0 ? (
+                {purchasedSamples.length === 0 ? (
                     notFoundMessage
                 ) : (
                     <>
                         <ul className='ps-0'>
-                            {favoriteSamples.map(sampleData => (
+                            {purchasedSamples.map(sampleData => (
                                 <div className='sounds__tracks' key={sampleData.id}>
                                     <li className='text-start'>{sampleData.name}</li>
                                     <div className='d-flex flex-row gap-3'>
@@ -64,21 +63,12 @@ function ProfileSounds() {
                                             ><PlayCircleFilledRoundedIcon />
                                             </motion.div>
                                         </Tooltip>
-                                        <Tooltip title='Add to cart'>
-                                            <motion.div
-                                                style={{ cursor: 'pointer' }}
-                                                whileHover={{ rotate: 90 }}
-                                                whileTap={{ scale: 0.8, borderRadius: "100%" }}
-                                                onClick={() => addToCart(sampleData)}
-                                            ><AddCircleIcon />
-                                            </motion.div>
-                                        </Tooltip>
-                                        <Tooltip title='Remove from profile'>
+                                        <Tooltip title='Download'>
                                             <motion.div
                                                 style={{ cursor: 'pointer' }}
                                                 whileTap={{ scale: 0.8, borderRadius: "100%" }}
-                                                onClick={() => removeFromFavorites(sampleData)}
-                                            ><RemoveCircleRoundedIcon />
+                                                onClick={() => download(sampleData)}
+                                            ><DownloadForOfflineIcon />
                                             </motion.div>
                                         </Tooltip>
                                     </div>
@@ -91,4 +81,4 @@ function ProfileSounds() {
     );
 }
 
-export default ProfileSounds;
+export default CollectionSounds;

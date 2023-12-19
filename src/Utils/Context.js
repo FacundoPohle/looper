@@ -11,8 +11,34 @@ export function ContextProvider({ children }) {
 
 
 ///////////////////////////////////////ColorPicker Context///////////////////////////////////////
-  const [dynamicColor, setDynamicColor] = useState('#9900ff');
+  // const [dynamicColor, setDynamicColor] = useState('#9900ff');
 
+  const [dynamicColor, setDynamicColor] = useState(() => {
+    try {
+      const storedDynamicColor = localStorage.getItem('dynamicColor');
+      return storedDynamicColor || '#9900ff';
+    } catch (error) {
+      console.error('Error initializing dynamicColor:', error);
+      return '#9900ff';
+    }
+  });
+  
+  //storage
+  useEffect(() => {
+    try {
+      const storedDynamicColor = localStorage.getItem('dynamicColor');
+      if (storedDynamicColor) {
+        setDynamicColor(storedDynamicColor);
+      }
+    } catch (error) {
+      console.error('Error initializing dynamicColor:', error);
+    }
+  }, []);
+
+  // Actualizar el localStorage cada vez que dynamicColor cambie
+  useEffect(() => {
+    localStorage.setItem('dynamicColor', dynamicColor);
+  }, [dynamicColor]);
 
 
   document.documentElement.style.setProperty('--dynamic', dynamicColor);
@@ -92,12 +118,67 @@ export function ContextProvider({ children }) {
   const toggleShow = () => {
     setShow(true);
   };
-
-
-
+  
+  
+  
   ///////////////////////////////////////////Carro Context////////////////////////////////////////////
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState(() => {
+    try {
+      const storedCartList = JSON.parse(localStorage.getItem('cartList'));
+      return storedCartList || [];
+    } catch (error) {
+      console.error('Error initializing cartList:', error);
+      return [];
+    }
+  });
   const [cartCount, setCartCount] = useState(0);
+  const [purchasedSamples, setPurchasedSamples] = useState(() => {
+    try {
+      const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
+      return storedPurchasedSamples || [];
+    } catch (error) {
+      console.error('Error initializing cartList:', error);
+      return [];
+    }
+  }); // Nuevo estado para almacenar samples comprados
+  const [downloadedSamples, setDownloadedSamples] = useState(() => {
+    try {
+      const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
+      return storedDownloadedSamples || [];
+    } catch (error) {
+      console.error('Error initializing cartList:', error);
+      return [];
+    }
+  }); // Nuevo estado para almacenar samples comprados
+
+  useEffect(() => {
+    // Almacenar datos en localStorage cada vez que cambian
+    localStorage.setItem('cartList', JSON.stringify(cartList));
+    localStorage.setItem('purchasedSamples', JSON.stringify(purchasedSamples));
+    localStorage.setItem('downloadedSamples', JSON.stringify(downloadedSamples));
+  }, [cartList, purchasedSamples, downloadedSamples]);
+
+  useEffect(() => {
+    try {
+      // Recuperar datos de localStorage al cargar el componente
+      const storedCartList = JSON.parse(localStorage.getItem('cartList'));
+      const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
+      const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
+  
+      if (storedCartList && storedCartList.length > 0) {
+        setCartList(storedCartList);
+        setCartCount(storedCartList.length);
+      }
+      if (storedPurchasedSamples && storedPurchasedSamples.length > 0) {
+        setPurchasedSamples(storedPurchasedSamples);
+      }
+      if (storedDownloadedSamples && storedDownloadedSamples.length > 0) {
+        setDownloadedSamples(storedDownloadedSamples);
+      }
+    } catch (error) {
+      console.error('Error loading data from localStorage:', error);
+    }
+  }, []);
 
 
   // Función para agregar un sample al carrito
@@ -106,14 +187,15 @@ export function ContextProvider({ children }) {
     const isSampleInCart = cartList.some((cartItem) => cartItem.id === sample.id);
 
     if (!isSampleInCart) {
+      
       // Si el sample no está en el carrito, agrégalo
-      setCartList([...cartList, sample]);
+      setCartList((prevCartList) => [...prevCartList, sample]);
 
-      setCartCount(cartCount + 1)
+      setCartCount((prevCount) => prevCount + 1);
 
       // Muestra una notificación
       Toastify({
-        text: "Successfully added",
+        text: "Added in cart",
         duration: 1500,
         style: {
           background: "linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)",
@@ -173,27 +255,33 @@ export function ContextProvider({ children }) {
   };
 
 
+  const handleCheckout = () => {
+    // Copiar los samples del cartList al array de samples comprados
+    setPurchasedSamples([...cartList]);
 
+    // Limpiar el cartList (opcional, dependiendo de tu lógica)
+    clearCart();
+  };
 
-  ///////////////////////////////////////////Profile Context////////////////////////////////////////////
-  // Favoritos
-
-  const [favoriteSamples, setFavoriteSamples] = useState([]);
-  const addToFavorites = (sample) => {
-    if (!favoriteSamples.includes(sample)) {
-      setFavoriteSamples((prevFavorites) => [...prevFavorites, sample]);
-
+  const download = (sampleData) => {
+    // Verificar si el sample ya ha sido descargado
+    const isSampleDownloaded = downloadedSamples.some((downloadedSample) => downloadedSample.id === sampleData.id);
+  
+    if (!isSampleDownloaded) {
+      // Si el sample no ha sido descargado, agregarlo al array de samples descargados
+      setDownloadedSamples((prevDownloadedSamples) => [...prevDownloadedSamples, sampleData]);
+  
       Toastify({
-        text: "Successfully added favorites",
+        text: "Successfully downloaded",
         duration: 1500,
         style: {
-          background: "linear-gradient(to right, #fc466b, #3f5efb, #fc466b)",
+          background: `linear-gradient(to right, ${dynamicColor}, #222, ${dynamicColor})`,
         },
       }).showToast();
     } else {
-      // Si el sample ya está en el carrito, muestra una notificación de error
+      // Si el sample ya ha sido descargado, mostrar una notificación de error
       Toastify({
-        text: "This sample is already in your favorites",
+        text: "This sample has already been downloaded",
         duration: 1500,
         style: {
           background: "linear-gradient(to right, #ff0000, #ff3333)",
@@ -202,10 +290,65 @@ export function ContextProvider({ children }) {
     }
   };
 
+  const purchasedAlert = () => {
+    Toastify({
+      text: "Already yours!",
+      duration: 1500,
+      style: {
+          background: "linear-gradient(to right, #ff0000, #ff3333)",
+      },
+  }).showToast();
+  };
+
+
+
+
+  ///////////////////////////////////////////Profile Context////////////////////////////////////////////
+  // Favoritos
+
+  const [favoriteSamples, setFavoriteSamples] = useState([]);
+
+  const toggleFavorite = (sample) => {
+    if (!favoriteSamples.includes(sample)) {
+        // Si el sample no está en la lista de favoritos, agrégalo
+        setFavoriteSamples((prevFavorites) => [...prevFavorites, sample]);
+
+        Toastify({
+            text: "Successfully added to favorites",
+            duration: 1500,
+            style: {
+                background: "linear-gradient(to right, #fc466b, black, #fc466b)",
+                background: `linear-gradient(to right, ${dynamicColor}, #222, ${dynamicColor})`,
+            },
+        }).showToast();
+    } else {
+        // Si el sample ya está en la lista de favoritos, quítalo
+        setFavoriteSamples((prevFavorites) =>
+            prevFavorites.filter((favSample) => favSample !== sample)
+        );
+
+        Toastify({
+            text: "Removed from favorites",
+            duration: 1500,
+            style: {
+                background: "linear-gradient(to right, #ff0000, #ff3333)",
+            },
+        }).showToast();
+    }
+};
+
   const removeFromFavorites = (sample) => {
     setFavoriteSamples((prevFavorites) =>
       prevFavorites.filter((favSample) => favSample !== sample)
     );
+
+    Toastify({
+      text: "Removed from favorites",
+      duration: 1500,
+      style: {
+          background: "linear-gradient(to right, #ff0000, #ff3333)",
+      },
+  }).showToast();
   };
 
   //Playlist
@@ -300,7 +443,7 @@ export function ContextProvider({ children }) {
 
 
   return (
-    <Context.Provider value={{ dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, addToFavorites, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
+    <Context.Provider value={{ downloadedSamples, download, handleCheckout, purchasedAlert, purchasedSamples, setPurchasedSamples, dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, toggleFavorite, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
       {children}
     </Context.Provider>
   );

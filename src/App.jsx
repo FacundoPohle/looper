@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { ContextProvider } from './Utils/Context';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyProfle from './Components/Profile/MyProfile';
+import Downloads from './Components/Profile/Downloads';
+import Collection from './Components/Profile/Collection';
 import PlaylistSearcher from './Components/Profile/PlaylistSearcher';
 import RobotCanvas from './Components/Canvas/Robot';
 import Typewriter from 'typewriter-effect';
@@ -44,6 +46,8 @@ const App = () => {
         <Route path='/tienda' element={<Tienda />}></Route>
         <Route path='/myprofile' element={<MyProfle />}></Route>
         <Route path='/playlist' element={<PlaylistSearcher />}></Route>
+         <Route path='/collection' element={<Collection />}></Route>
+        <Route path='/downloads' element={<Downloads />}></Route> 
         <Route path='/cart' element={<Cart />}></Route>
       </Routes>
       <WaveSurfer />

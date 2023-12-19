@@ -3,6 +3,7 @@ import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRou
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import React, { useEffect } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion"
 import Robot from './Canvas/Robot';
@@ -10,7 +11,7 @@ import Typewriter from 'typewriter-effect';
 
 
 function AllSounds() {
-    const { filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, addToFavorites } = useGralContext();
+    const { cartList, filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, favoriteSamples, toggleFavorite, dynamicColor } = useGralContext();
 
 
     // Esta función maneja la reproducción de un sample
@@ -57,9 +58,9 @@ function AllSounds() {
                                 <div className='d-flex flex-row gap-3'>
                                     <Tooltip title='Add to my profile'>
                                         <motion.div
-                                            style={{ cursor: 'pointer' }}
-                                            whileTap={{ scale: 0.8, borderRadius: "100%" }}
-                                            onClick={() => addToFavorites(sampleData)}
+                                            style={{ cursor: 'pointer', color: favoriteSamples.includes(sampleData) ? dynamicColor : '#fafafa'}}
+                                            whileTap={{ scale: 0.8, borderRadius: "100%"}}
+                                            onClick={() => toggleFavorite(sampleData)}
                                         ><FavoriteRoundedIcon />
                                         </motion.div>
                                     </Tooltip>
@@ -77,7 +78,13 @@ function AllSounds() {
                                             whileHover={{ rotate: 90 }}
                                             whileTap={{ scale: 0.8, borderRadius: "100%" }}
                                             onClick={() => addToCart(sampleData)}
-                                        ><AddCircleIcon />
+                                        >
+                                            {cartList.includes(sampleData) ? (
+                                                        <CheckCircleIcon />
+                                                    ) : (
+                                                        <AddCircleIcon />
+                                                    )}
+                                            
                                         </motion.div>
                                     </Tooltip>
                                 </div>

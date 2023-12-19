@@ -64,7 +64,7 @@ const Cart = () => {
                             <p className='carro__price--color'>${ctx.calculateTotalPrice()}</p>
                         </div>
                         <div className='btnCheck__display'>
-                            <span className='btnCheck'>Checkout</span>
+                            <span className='btnCheck' onClick={ctx.handleCheckout}>Checkout</span>
                         </div>
                     </>
                 ) : (
@@ -74,6 +74,7 @@ const Cart = () => {
                             <Typewriter
                                 options={{
                                     loop: true,
+                                    delay: 50
                                 }}
                                 onInit={(typewriter) => {
                                     typewriter.typeString(`your cart is empty! You should go to the store!`)

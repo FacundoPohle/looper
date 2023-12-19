@@ -1,5 +1,5 @@
 .Base {
-    margin-top: 6rem;
+    margin-top: 5.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -37,11 +37,18 @@
     @extend .scroll;
     justify-content: flex-end;
     height: 16rem;
+}
 
+.scroll2b{
+    @extend .scroll;
+    justify-content: flex-end;
+    // height: 16rem;
 }
 
 .scroll3{
     @extend .scroll;
+    padding-left: 0;
+    padding-right: 0.5rem;
     flex-direction: column;
 }
 

@@ -161,12 +161,12 @@
 
 
 @media screen and (min-width: 500px) {
-    
+
     .loopertitleSm {
-        display: none!important;
+        display: none !important;
     }
 
-    .mob{
+    .mob {
         display: none;
     }
 }
@@ -186,8 +186,8 @@
     }
 
 
-    .point{
-      
+    .point {
+
         &__absolute {
             flex-direction: column;
             top: 4rem;
@@ -213,13 +213,13 @@
             width: 15rem;
         }
 
-        &__absolute--5b{
+        &__absolute--5b {
             top: -2rem;
-          }
+        }
 
-        &__absolute--5c{
+        &__absolute--5c {
             top: 2em;
-          }
+        }
 
         &__absolute--6 {
             // display: none;
@@ -238,8 +238,14 @@
             height: 22rem;
             width: 15rem;
         }
+
+        &__absolute--8 {
+            top: 0rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
-  
+
     // Wavesurfer
 
     .wavesurfer {
@@ -260,11 +266,20 @@
     }
 
     //animaciones
+    .typewriterwidth {
+        &__forprofile {
+            height: 4.5rem;
+        }
+
+        &__modal{
+            width: 200px;
+          }
+    }
 
     .planetarytext1 {
         display: none;
     }
-    
+
     .planetarytext2 {
         display: none;
     }
@@ -280,7 +295,7 @@
         text-align: center;
     }
 
-    .text-copy:nth-child(4){
+    .text-copy:nth-child(4) {
         stroke: var(--white) !important;
         animation-delay: -4s;
     }
@@ -297,6 +312,7 @@
 
         &__samples {
             width: 13rem;
+            // margin-top: 1rem;
         }
 
         &__buttons {
@@ -332,6 +348,23 @@
         padding-right: 0.2;
     }
 
+    .scroll2b {
+        margin-top: 0rem;
+        height: 13rem;
+        padding-right: 0.2;
+    }
+
+    .scroll3 {
+        padding-top: 5.2rem;
+        margin-top: 0rem;
+        height: 20rem;
+    }
+
+    //Login
+
+    input {
+        height: 2.5rem;
+    }
 
     //Profile sounds
 
@@ -340,7 +373,7 @@
         margin-bottom: 7rem;
         padding-inline: 0rem;
 
-        &__sounds{
+        &__sounds {
             border-radius: 0px;
             background-color: transparent;
             padding-inline: 1.5rem;
@@ -351,26 +384,26 @@
             align-items: center;
         }
 
-        &__sounds2{
+        &__sounds2 {
             border-radius: 0px;
             background-color: transparent;
             padding-inline: 1.5rem;
             padding-bottom: 0.4rem;
             margin-bottom: 3rem;
-            min-height: 26.5rem !important;
+            min-height: 26.5rem;
             flex-direction: column;
             align-items: center;
         }
     }
 
-    .menu{
+    .menu {
         width: 260px;
         z-index: 1;
     }
 
-    .outer{
+    .outer {
         margin: 0 25px;
-      }
+    }
 
 
 
@@ -378,11 +411,11 @@
     .carro {
         width: 18rem;
         font-size: small;
-        min-height: 23rem  !important;
+        min-height: 23rem !important;
 
-        &__display{
-        margin-bottom: 8rem;
-        margin-top: 4rem;
+        &__display {
+            margin-bottom: 8rem;
+            margin-top: 4rem;
         }
 
         &__genre {
@@ -390,12 +423,12 @@
         }
     }
 
-    .titulos__cart{
-        font-size: 20px;  
+    .titulos__cart {
+        font-size: 20px;
     }
 
-    .ul3{
-       height: 6rem !important;
+    .ul3 {
+        height: 6rem !important;
     }
 
     // .errorfound{
@@ -404,23 +437,23 @@
 
     @keyframes typewriter {
         to {
-          width: 250px !important;
+            width: 250px !important;
         }
-      }
+    }
 
-    .profmessage{
+    .profmessage {
         width: 12rem !important;
     }
 
-    .profmessage2{
+    .profmessage2 {
         width: 11.5rem !important;
     }
 
-    .profmessage3{
+    .profmessage3 {
         width: 9.6rem !important;
     }
 
-    .notmob{
+    .notmob {
         display: none !important;
     }
 
