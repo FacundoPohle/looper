@@ -1,18 +1,19 @@
 import { useGralContext } from '../Utils/Context';
 import PlayCircleFilledRoundedIcon from '@mui/icons-material/PlayCircleFilledRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Tooltip from '@mui/material/Tooltip';
+import Login from './Login';
 import { motion } from "framer-motion"
 import Robot from './Canvas/Robot';
 import Typewriter from 'typewriter-effect';
 
 
 function AllSounds() {
-    const { cartList, filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, favoriteSamples, toggleFavorite, dynamicColor } = useGralContext();
-
+    const { user, cartList, filteredSamples, setCurrentSample, currentSample, setCurrentAudioName, addToCart, favoriteSamples, toggleFavorite, dynamicColor } = useGralContext();
+    const [modalShow, setModalShow] = useState(false);
 
     // Esta función maneja la reproducción de un sample
     const handlePlaySample = (sampleData) => {
@@ -57,12 +58,21 @@ function AllSounds() {
                                 <li className='text-start'>{sampleData.name}</li>
                                 <div className='d-flex flex-row gap-3'>
                                     <Tooltip title='Add to my profile'>
-                                        <motion.div
-                                            style={{ cursor: 'pointer', color: favoriteSamples.includes(sampleData) ? dynamicColor : '#fafafa'}}
-                                            whileTap={{ scale: 0.8, borderRadius: "100%"}}
-                                            onClick={() => toggleFavorite(sampleData)}
-                                        ><FavoriteRoundedIcon />
-                                        </motion.div>
+                                        {user === null ?
+                                            <motion.div
+                                                style={{ cursor: 'pointer' }}
+                                                whileTap={{ scale: 0.8, borderRadius: "100%" }}
+                                                onClick={() => setModalShow(true)}
+                                            ><FavoriteRoundedIcon />
+
+                                            </motion.div>
+                                            :
+                                            <motion.div
+                                                style={{ cursor: 'pointer', color: favoriteSamples.includes(sampleData) ? dynamicColor : '#fafafa' }}
+                                                whileTap={{ scale: 0.8, borderRadius: "100%" }}
+                                                onClick={() => toggleFavorite(sampleData)}
+                                            ><FavoriteRoundedIcon />
+                                            </motion.div>}
                                     </Tooltip>
                                     <Tooltip title='Play'>
                                         <motion.div
@@ -80,13 +90,17 @@ function AllSounds() {
                                             onClick={() => addToCart(sampleData)}
                                         >
                                             {cartList.includes(sampleData) ? (
-                                                        <CheckCircleIcon />
-                                                    ) : (
-                                                        <AddCircleIcon />
-                                                    )}
-                                            
+                                                <CheckCircleIcon />
+                                            ) : (
+                                                <AddCircleIcon />
+                                            )}
+
                                         </motion.div>
                                     </Tooltip>
+                                    <Login
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                    />
                                 </div>
                             </div>
                         ))}

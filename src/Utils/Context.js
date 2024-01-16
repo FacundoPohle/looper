@@ -304,6 +304,10 @@ export function ContextProvider({ children }) {
 
 
   ///////////////////////////////////////////Profile Context////////////////////////////////////////////
+ 
+  const user = true
+ 
+ 
   // Favoritos
 
   const [favoriteSamples, setFavoriteSamples] = useState([]);
@@ -443,7 +447,7 @@ export function ContextProvider({ children }) {
 
 
   return (
-    <Context.Provider value={{ downloadedSamples, download, handleCheckout, purchasedAlert, purchasedSamples, setPurchasedSamples, dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, toggleFavorite, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
+    <Context.Provider value={{ user, downloadedSamples, download, handleCheckout, purchasedAlert, purchasedSamples, setPurchasedSamples, dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, toggleFavorite, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
       {children}
     </Context.Provider>
   );

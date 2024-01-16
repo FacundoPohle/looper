@@ -1,15 +1,20 @@
 // Import React hooks
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import { useGralContext } from '../../Utils/Context';
 
 
 // Import WaveSurfer
 import WaveSurfer from 'wavesurfer.js'
 
+
 // WaveSurfer hook
+
 const useWavesurfer = (containerRef, options) => {
+  // const containerRef = useRef();
+
+
   const [wavesurfer, setWavesurfer] = useState(null)
-const { currentSample, isMobile, dynamicColor } = useGralContext();
+  const { currentSample, isMobile, dynamicColor } = useGralContext();
 
 
   // Initialize wavesurfer when the container mounts

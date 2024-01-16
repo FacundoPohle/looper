@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import Login from './Login';
 import { useState } from "react";
 import ColorPicker from './ColorPicker';
-import { motion } from "framer-motion"
+import { useGralContext } from '../Utils/Context';
+
 
 function NavBar() {
 
+  const { user } = useGralContext();
   const [modalShow, setModalShow] = useState(false);
   const [active, setActive] = useState("navbar__menu");
   const [icon, setIcon] = useState("nav__toggler");
@@ -31,8 +33,7 @@ function NavBar() {
         <div className={active}>
           <div className='navbar__storeprofile'>
             <Link className='Links ntitle fromLeft' to="/tienda">Store</Link>
-
-            <Link className='Links ntitlee fromLeft' to='/myprofile'>My profile</Link>
+            {user === null ? <Link className='Links ntitlee fromLeft' to="/myprofile">My Profile</Link> : <Link className='Links ntitlee fromLeft' to="/myprofile">My Profile</Link>}
           </div>
 
           <div className='navbar__logincart'>
@@ -44,9 +45,9 @@ function NavBar() {
               onHide={() => setModalShow(false)}
             />
             <Link className='Links ntitle ntitle__cart' to="/cart">
-                <CartWidget />
+              <CartWidget />
             </Link>
-            <ColorPicker/>
+            <ColorPicker />
           </div>
         </div>
         <div onClick={navToggle} className={icon}>
