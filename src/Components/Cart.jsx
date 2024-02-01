@@ -56,6 +56,31 @@ const Cart = () => {
                             <p>${ctx.calculateSubTotal()}</p>
                         </div>
                         <div className='carro__price pt-0 mt-0'>
+
+                            <p>{ctx.selectedGiftCard ? (
+                               <>
+                               {`${ctx.selectedGiftCard.name} (${ctx.selectedGiftCard.discountspeech}off)  `} 
+                               {ctx.samplesRemaining === 0 ? (
+                                 <>
+                                 <span className="samples-left">(Pack complete)</span>
+                                 <span onClick={() => ctx.deleteGiftCard()} className="cardbait__3">Remove</span>
+                                 </>
+                               ) : (
+                                 <>
+                                 <span className="samples-left">{` (${ctx.samplesRemaining} samples left to complete pack)`}</span></>)}
+                                 <span onClick={() => ctx.deleteGiftCard()} className="cardbait__3">Remove</span>
+                                 </>
+                            ) :
+                                (<div className='discountcart'>
+                                    Package discount (not selected)
+                                    <Link className="Links" to='/giftcards'>
+                                        <div className="cardbait__2">Go check</div>
+                                    </Link>
+                                </div>)
+                            }</p>
+                            <p>${ctx.selectedGiftCard ? ctx.calcDiscount() : 0}</p>
+                        </div>
+                        <div className='carro__price pt-0 mt-0'>
                             <p>Taxes 0.15%</p>
                             <p>${ctx.calcTax()}</p>
                         </div>

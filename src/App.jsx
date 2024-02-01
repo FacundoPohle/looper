@@ -10,6 +10,7 @@ import Welcome from './Components/Welcome';
 import Downloads from './Components/Profile/Downloads';
 import Collection from './Components/Profile/Collection';
 import PlaylistSearcher from './Components/Profile/PlaylistSearcher';
+import GiftCards from './Components/Profile/GiftCards';
 
 const App = () => {
   
@@ -22,7 +23,8 @@ const App = () => {
         <Route path='/tienda' element={<Tienda />}></Route>
         <Route path='/myprofile' element={<MyProfle />}></Route>
         <Route path='/playlist' element={<PlaylistSearcher />}></Route>
-         <Route path='/collection' element={<Collection />}></Route>
+        <Route path='/giftcards' element={<GiftCards />}></Route>
+        <Route path='/collection' element={<Collection />}></Route>
         <Route path='/downloads' element={<Downloads />}></Route> 
         <Route path='/cart' element={<Cart />}></Route>
       </Routes>

@@ -3,6 +3,17 @@
     margin-left: 2rem;
 }
 
+.discountcart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.samples-left{
+    color: var(--background);
+}
+
 .css-jcn4dz-MuiBadge-badge{
     background-color: var(--background) !important;
 }
@@ -35,7 +46,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 8rem;
+        margin-top: 5.4rem;
     }
 
     &__price{

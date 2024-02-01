@@ -9,6 +9,35 @@ export const useGralContext = () => useContext(Context);
 
 export function ContextProvider({ children }) {
 
+///////////////////////////////////////GiftCards//////////////////////////////////////////////
+// Ejemplo en tu contexto
+const [selectedGiftCard, setSelectedGiftCard] = useState(null);
+
+// Función para seleccionar una gift card
+const selectGiftCard = (packageType) => {
+  setSelectedGiftCard(packageType);
+
+  Toastify({
+    text: `You have selected the ${packageType.name}`,  // Usamos el parámetro actualizado packageType
+    duration: 3000,
+    style: {
+      background: `${packageType.gradient}`,  // Usamos el parámetro actualizado packageType
+    },
+  }).showToast();
+};
+
+const deleteGiftCard = () => {
+  setSelectedGiftCard(null)
+}
+
+useEffect(() => {
+  // Realiza acciones cuando selectedGiftCard cambie
+  console.log('Selected Gift Card:', selectedGiftCard);
+  // Puedes realizar más lógica aquí según tus necesidades
+}, [selectedGiftCard]); // La dependencia aquí indica que el efecto se ejecutará cuando selectedGiftCard cambie
+
+
+
 
 ///////////////////////////////////////ColorPicker Context///////////////////////////////////////
   // const [dynamicColor, setDynamicColor] = useState('#9900ff');
@@ -122,63 +151,66 @@ export function ContextProvider({ children }) {
   
   
   ///////////////////////////////////////////Carro Context////////////////////////////////////////////
-  const [cartList, setCartList] = useState(() => {
-    try {
-      const storedCartList = JSON.parse(localStorage.getItem('cartList'));
-      return storedCartList || [];
-    } catch (error) {
-      console.error('Error initializing cartList:', error);
-      return [];
-    }
-  });
+  const [cartList, setCartList] = useState([]//() => {
+  //   try {
+  //     const storedCartList = JSON.parse(localStorage.getItem('cartList'));
+  //     return storedCartList || [];
+  //   } catch (error) {
+  //     console.error('Error initializing cartList:', error);
+  //     return [];
+  //   }
+  // }
+  );
   const [cartCount, setCartCount] = useState(0);
-  const [purchasedSamples, setPurchasedSamples] = useState(() => {
-    try {
-      const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
-      return storedPurchasedSamples || [];
-    } catch (error) {
-      console.error('Error initializing cartList:', error);
-      return [];
-    }
-  }); // Nuevo estado para almacenar samples comprados
-  const [downloadedSamples, setDownloadedSamples] = useState(() => {
-    try {
-      const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
-      return storedDownloadedSamples || [];
-    } catch (error) {
-      console.error('Error initializing cartList:', error);
-      return [];
-    }
-  }); // Nuevo estado para almacenar samples comprados
+  const [purchasedSamples, setPurchasedSamples] = useState([]//() => {
+  //   try {
+  //     const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
+  //     return storedPurchasedSamples || [];
+  //   } catch (error) {
+  //     console.error('Error initializing cartList:', error);
+  //     return [];
+  //   }
+  // }
+  ); // Nuevo estado para almacenar samples comprados
+  const [downloadedSamples, setDownloadedSamples] = useState([]//() => {
+  //   try {
+  //     const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
+  //     return storedDownloadedSamples || [];
+  //   } catch (error) {
+  //     console.error('Error initializing cartList:', error);
+  //     return [];
+  //   }
+  // }
+  ); // Nuevo estado para almacenar samples comprados
 
-  useEffect(() => {
-    // Almacenar datos en localStorage cada vez que cambian
-    localStorage.setItem('cartList', JSON.stringify(cartList));
-    localStorage.setItem('purchasedSamples', JSON.stringify(purchasedSamples));
-    localStorage.setItem('downloadedSamples', JSON.stringify(downloadedSamples));
-  }, [cartList, purchasedSamples, downloadedSamples]);
+  // useEffect(() => {
+  //   // Almacenar datos en localStorage cada vez que cambian
+  //   localStorage.setItem('cartList', JSON.stringify(cartList));
+  //   localStorage.setItem('purchasedSamples', JSON.stringify(purchasedSamples));
+  //   localStorage.setItem('downloadedSamples', JSON.stringify(downloadedSamples));
+  // }, [cartList, purchasedSamples, downloadedSamples]);
 
-  useEffect(() => {
-    try {
-      // Recuperar datos de localStorage al cargar el componente
-      const storedCartList = JSON.parse(localStorage.getItem('cartList'));
-      const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
-      const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
+  // useEffect(() => {
+  //   try {
+  //     // Recuperar datos de localStorage al cargar el componente
+  //     const storedCartList = JSON.parse(localStorage.getItem('cartList'));
+  //     const storedPurchasedSamples = JSON.parse(localStorage.getItem('purchasedSamples'));
+  //     const storedDownloadedSamples = JSON.parse(localStorage.getItem('downloadedSamples'));
   
-      if (storedCartList && storedCartList.length > 0) {
-        setCartList(storedCartList);
-        setCartCount(storedCartList.length);
-      }
-      if (storedPurchasedSamples && storedPurchasedSamples.length > 0) {
-        setPurchasedSamples(storedPurchasedSamples);
-      }
-      if (storedDownloadedSamples && storedDownloadedSamples.length > 0) {
-        setDownloadedSamples(storedDownloadedSamples);
-      }
-    } catch (error) {
-      console.error('Error loading data from localStorage:', error);
-    }
-  }, []);
+  //     if (storedCartList && storedCartList.length > 0) {
+  //       setCartList(storedCartList);
+  //       setCartCount(storedCartList.length);
+  //     }
+  //     if (storedPurchasedSamples && storedPurchasedSamples.length > 0) {
+  //       setPurchasedSamples(storedPurchasedSamples);
+  //     }
+  //     if (storedDownloadedSamples && storedDownloadedSamples.length > 0) {
+  //       setDownloadedSamples(storedDownloadedSamples);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error loading data from localStorage:', error);
+  //   }
+  // }, []);
 
 
   // Función para agregar un sample al carrito
@@ -226,13 +258,19 @@ export function ContextProvider({ children }) {
   };
 
   const calcTax = () => {
-    return calculateSubTotal() * 0.15;
+    return parseFloat((calcDiscount() * 0.15).toFixed(2));
+  }
+
+  const calcDiscount = () => {
+    const discount = selectedGiftCard ? selectedGiftCard.discount : 0;
+
+    return parseFloat((calculateSubTotal() * (1 - discount)).toFixed(2));
   }
 
   const calculateTotalPrice = () => {
-    const subtotal = parseFloat(calculateSubTotal());
     const tax = parseFloat(calcTax());
-    const total = subtotal + tax;
+    const discount = parseFloat(calcDiscount())
+    const total = discount + tax;
 
     // Round to two decimal places
     return total.toFixed(2);
@@ -254,14 +292,55 @@ export function ContextProvider({ children }) {
     setCartCount(0);
   };
 
+  function calculateSamplesRemaining(cartList, selectedGiftCard) {
+    if (!selectedGiftCard || !selectedGiftCard.pack) {
+      // Si selectedGiftCard o su propiedad pack son null o undefined, retorna 0
+      return 0;
+    }
+  
+    const packSize = selectedGiftCard.pack;
+  
+    if (!Array.isArray(cartList) || packSize === 0) {
+      // Si cartList no es un array o el tamaño del paquete es 0, retorna 0
+      return 0;
+    }
+  
+    const samplesInCart = cartList.length;
+  
+    // Calcula la cantidad de muestras restantes para completar el paquete
+    const samplesRemaining = packSize - samplesInCart;
+  
+    return samplesRemaining >= 0 ? samplesRemaining : 0;
+  }
 
+  const samplesRemaining = calculateSamplesRemaining(cartList, selectedGiftCard);
+  
   const handleCheckout = () => {
+    if (selectedGiftCard) {
+      // Verificar si la cantidad de samples en el carrito es igual a la cantidad requerida por la gift card
+      if (cartList.length !== selectedGiftCard.pack) {
+        // Mostrar un mensaje de error o tomar la acción apropiada según tus necesidades
+       
+          Toastify({
+            text: "You're missing samples to complete the Package discount",
+            duration: 2500,
+            style: {
+              background: "linear-gradient(to right, #ff0000, #ff3333)",
+            },
+          }).showToast();
+        
+        console.log('No puedes hacer el checkout. Agrega la cantidad correcta de samples para la gift card.');
+        return;
+      } 
+    }
+  
     // Copiar los samples del cartList al array de samples comprados
     setPurchasedSamples([...cartList]);
-
+  
     // Limpiar el cartList (opcional, dependiendo de tu lógica)
     clearCart();
   };
+  
 
   const download = (sampleData) => {
     // Verificar si el sample ya ha sido descargado
@@ -447,8 +526,9 @@ export function ContextProvider({ children }) {
 
 
   return (
-    <Context.Provider value={{ user, downloadedSamples, download, handleCheckout, purchasedAlert, purchasedSamples, setPurchasedSamples, dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, toggleFavorite, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, filterNames }}>
+    <Context.Provider value={{deleteGiftCard, samplesRemaining, calculateSamplesRemaining, selectedGiftCard, user, selectGiftCard, downloadedSamples, download, handleCheckout, purchasedAlert, purchasedSamples, setPurchasedSamples, dynamicColor, setDynamicColor, isMobile, setIsMobile, removeFromPlaylist, addToPlaylist, selectedPlaylist, setSelectedPlaylist, playlists, setPlaylists, deletePlaylist, favoriteSamples, toggleFavorite, removeFromFavorites, cartCount, theFilteredSamples, handleResetFilters, show, handleClose, toggleShow, filteredSamples, selectedFilters, handleFilterChange, expanded, handleChange, currentAudioName, setCurrentAudioName, currentSample, setCurrentSample, cartList, addToCart, removeFromCart, calculateTotalPrice, calculateSubTotal, calcTax, clearCart, calcDiscount, filterNames }}>
       {children}
     </Context.Provider>
   );
 }
+

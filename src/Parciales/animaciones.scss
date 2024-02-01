@@ -16,7 +16,7 @@
 
   &__forfilters{
     height: 4rem;
-    width: 300px;
+    width: 400px;
     margin-bottom: 4rem;
   }
 
@@ -113,6 +113,26 @@
       border-right-color: hsl(0, 0%, 80%);
     }
   }
+
+  .carbaitanimation {
+    animation-name: coder;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes coder {
+    0% {
+        transform: scale(100%);
+    }
+
+    50% {
+        transform: scale(115%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}
 
   .planetarytext1{
     height: 2rem;
