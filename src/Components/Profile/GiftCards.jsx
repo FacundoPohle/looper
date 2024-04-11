@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
   const giftCardPackages = [
     {
       name: "BRONZE PACK",
-      title: "unlock 25 SAMPLES 0,40 euro each",
+      title: "Unlock 25 SAMPLES 0,40 Euro each",
       pack: 20,
       discountspeech: "20%",
       discount: 0.20,
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
     },
     {
       name: 'SILVER PACK',
-      title: 'unlock 50 SAMPLES 0,37 euro each',
+      title: 'Unlock 50 SAMPLES 0,37 Euro each',
       pack: 50,
       discountspeech: '26%',
       discount: 0.26 ,
@@ -25,7 +25,7 @@ import { Link } from "react-router-dom";
     },
     {
       name: 'GOLDEN PACK',
-      title: 'unlock 75 SAMPLES 0,32 euro each',
+      title: 'Unlock 75 SAMPLES 0,32 Euro each',
       pack: 75,
       discountspeech: '32%',
       discount: 0.32,
@@ -34,7 +34,7 @@ import { Link } from "react-router-dom";
     },
     {
       name: 'DIAMOND PACK',
-      title: 'unlock 100 SAMPLES 0,34 euro each',
+      title: 'Unlock 100 SAMPLES 0,34 Euro each',
       pack: 100,
       discountspeech: '34%',
       discount: 0.34,
